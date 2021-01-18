@@ -1,24 +1,42 @@
 .search {
   display: grid;
-  width: 50%;
-  box-shadow: $shadow-light;
-  grid-template-columns: 8fr 1fr;
+  width: 100%;
+  box-shadow: $shadow-medium;
+  grid-template-columns: 8fr 2fr;
+  border-radius: 1rem;
   border: none;
+
+  &:focus {
+    outline: none;
+  }
 
   &__field {
     color: $color-grey-dark-1;
     background-color: #fff;
     border: none;
     margin-left: 2rem;
+    padding: 2rem 1rem;
+    font-size: 2rem;
+
+    &:focus {
+      outline: none;
+    }
   }
 
   &__btn {
     background-color: turquoise;
-    box-shadow: -11px 0px 19px 0px rgba(50, 50, 50, 0.75);
+    // box-shadow: -11px 0px 19px 0px rgba(50, 50, 50, 0.75);
     border: none;
-    width: 2rem;
     font-size: 1.5rem;
     font-weight: 600;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &:focus {
+      outline: none;
+    }
   }
 }
 
@@ -26,4 +44,5 @@
   height: 2.25rem;
   width: 2.25rem;
   fill: currentColor;
+  color: white;
 }

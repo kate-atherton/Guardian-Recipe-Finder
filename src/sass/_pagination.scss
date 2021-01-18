@@ -1,0 +1,26 @@
+.pagination {
+  display: flex;
+
+  &__btn,
+  &__dots {
+    width: 3rem;
+    color: blue;
+    background-color: white;
+    border: none;
+    font-size: 2rem;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    &--active {
+      background-color: blue;
+      color: white;
+      cursor: auto;
+    }
+  }
+}

@@ -10,19 +10,29 @@
 
   <body>
     <main class="main">
-      <form class="search">
-        <input
-          type="text"
-          class="search__field"
-          placeholder="Search articles by keyword eg. ingredient, dish, author.."
-        />
-        <button class="btn search__btn">
-          <svg class="svg">
-            <use href="img/icons.svg#icon-search"></use>
-          </svg>
-        </button>
-      </form>
-      <div class="results"></div>
+      <div class="container">
+        <form class="search">
+          <input
+            type="text"
+            class="search__field"
+            placeholder="Search articles by keyword eg. ingredient, dish, author.."
+          />
+          <button class="btn search__btn">
+            <svg class="svg">
+              <use href="img/icons.svg#icon-search"></use>
+            </svg>
+          </button>
+        </form>   
+        <div class="search__query"></div> 
+        <div class="results">     
+        </div>
+        <div class="pagination"></div>
+      </div>
     </main>
   </body>
 </html>
+
+
+
+
+

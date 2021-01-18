@@ -1,46 +1,39 @@
 import "../sass/main.scss";
-
 import * as model from "./model.js";
-import * as view from "./views/view.js";
+import resultsView from "./views/resultsView";
+import View from "./views/view.js";
+import paginationView from "./views/paginationView.js";
 
-console.log("test1");
-console.log("test2");
+const controlResults = async () => {
+  try {
+    resultsView.renderSpinner();
 
-model.test();
+    const query = resultsView.getQuery();
+    if (!query) return;
 
-// document.body.appendChild(component());
+    await model.loadResults(query);
 
-// const controlSearchResults = async () => {
-//   try {
-//     resultsView.renderSpinner();
+    //Render results
+    resultsView.render(model.getSearchResultsPage(), query);
 
-//     const query = searchView.getQuery();
-//     if (!query) return;
+    //Render initial pagination buttons
+    paginationView.renderPagination(model.state);
+  } catch (err) {
+    resultsView.renderError(err);
+  }
+};
 
-//     //Load search results
-//     await model.loadSearchResults(query);
+const controlPagination = (page) => {
+  //  Render new results
+  resultsView.render(model.getSearchResultsPage(page));
 
-//     //Render results
-//     resultsView.render(model.getSearchResultsPage());
+  //render new pagination buttons
+  paginationView.renderPagination(model.state);
+};
 
-//     //Render initial pagination buttons
-//     paginationView.render(model.state.search);
-//   } catch (err) {
-//     console.log(err);
-//   }
-// };
+const init = function () {
+  resultsView.addHandlerRender(controlResults);
+  paginationView.addHandlerClick(controlPagination);
+};
 
-// const controlResults = async () => {
-//   try {
-//     const query = "sausages";
-//     await model.loadResults(query);
-//   } catch (err) {
-//     view.renderError(err);
-//   }
-// };
-
-// const init = function () {
-//   view.addHandlerRender(controlResults);
-// };
-
-// init();
+init();

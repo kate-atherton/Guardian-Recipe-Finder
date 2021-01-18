@@ -23,7 +23,22 @@ module.exports = {
         use: {
           loader: "babel-loader",
           options: {
-            presets: ["@babel/preset-env"],
+            cacheDirectory: true,
+            presets: [
+              "@babel/preset-env",
+              // {
+              //   targets: [
+              //     "last 3 Chrome versions",
+              //     "last 3 Firefox versions",
+              //     "last 3 edge versions",
+              //     "last 3 Safari versions",
+              //   ],
+              // },
+            ],
+            plugins: [
+              ["@babel/plugin-proposal-class-properties"],
+              ["@babel/plugin-transform-runtime"],
+            ],
           },
         },
       },
