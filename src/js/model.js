@@ -10,7 +10,6 @@ export const state = {
 };
 
 export const loadResults = async (query) => {
-  console.log("starting results search");
   state.searched = query;
 
   if (/\s/.test(query)) {
@@ -54,6 +53,5 @@ export const getSearchResultsPage = (page = state.page) => {
 };
 
 export const updateSort = (sortOption) => {
-  console.log("model being updated with new sort option");
   state.sort = sortOption;
 };

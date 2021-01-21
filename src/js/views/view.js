@@ -1,8 +1,6 @@
 import icons from "../../../static/img/icons.svg";
 
 export default class View {
-  _searchBtn = document.querySelector(".search__btn");
-
   _clear() {
     this._parentElement.innerHTML = "";
   }
