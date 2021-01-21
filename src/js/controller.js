@@ -4,17 +4,31 @@ import resultsView from "./views/resultsView";
 import View from "./views/view.js";
 import paginationView from "./views/paginationView.js";
 
-const controlResults = async () => {
+const controlResults = async (sort) => {
   try {
+    console.log("results being loaded");
     resultsView.renderSpinner();
 
-    const query = resultsView.getQuery();
-    if (!query) return;
+    let query;
+
+    if (!sort) {
+      query = resultsView.getQuery();
+      if (!query) {
+        return;
+      }
+    } else {
+      query = model.state.searched;
+    }
 
     await model.loadResults(query);
 
     //Render results
-    resultsView.render(model.getSearchResultsPage(), query);
+    resultsView.render(model.getSearchResultsPage(), model.state.searched);
+
+    //Add a sort option
+    resultsView.renderSortOption();
+    resultsView.addHandlerShowSort();
+    resultsView.addHandlerSort(controlSort);
 
     //Render initial pagination buttons
     paginationView.renderPagination(model.state);
@@ -23,9 +37,15 @@ const controlResults = async () => {
   }
 };
 
+const controlSort = async (sortOption) => {
+  model.updateSort(sortOption);
+  controlResults(model.state.sort);
+};
+
 const controlPagination = (page) => {
   //  Render new results
-  resultsView.render(model.getSearchResultsPage(page));
+
+  resultsView.render(model.getSearchResultsPage(page), model.state.searched);
 
   //render new pagination buttons
   paginationView.renderPagination(model.state);

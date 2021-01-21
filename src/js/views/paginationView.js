@@ -2,17 +2,20 @@ import View from "./view.js";
 
 class PaginationView extends View {
   _parentElement = document.querySelector(".pagination");
+  _pageTop = document.querySelector(".container");
 
   addHandlerClick(handler) {
     this._parentElement.addEventListener("click", (e) => {
       const btn = e.target.closest(".pagination__btn");
-      if (!btn) return;
+      if (!btn || btn.classList.contains("pagination__btn--active")) return;
 
       const goToPage = btn.classList.contains("pagination__arrow")
         ? btn.dataset.goto
         : btn.textContent;
 
       handler(goToPage);
+
+      this._pageTop.scrollIntoView({ behavior: "smooth" });
     });
   }
 
@@ -52,13 +55,13 @@ class PaginationView extends View {
     });
 
     return `
-      <button class="pagination__btn${
+      <button class="pagination__btn pagination__btn${
         curPage !== 1 ? "" : "--active"
       } pagination__arrow"
         
       }" data-goto="${curPage - 1}">Previous</button>
       ${buttonHtml}
-      <button class="pagination__btn${
+      <button class="pagination__btn pagination__btn${
         curPage !== numPages ? "" : "--active"
       } pagination__arrow" data-goto="${curPage + 1}">Next</button>
     `;
