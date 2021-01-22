@@ -2,19 +2,10 @@ import View from "./view.js";
 
 class ResultsView extends View {
   _parentElement = document.querySelector(".results");
-  _searchedContainer = document.querySelector(".searchTerm");
   _errorMessage = "No results found for your query! Please try again";
 
-  _clearSearched() {
-    this._searchedContainer.textContent = "";
-  }
-
-  renderResults(posts, query) {
-    this._parentElement.innerHTML = "";
-    this._clearSearched();
-
-    const searchedText = `Results for:${query}`;
-    this._searchedContainer.insertAdjacentHTML("beforeend", searchedText);
+  renderResults(posts) {
+    this._clear();
 
     posts.forEach((post) => {
       const markup = this._generateMarkup(post);

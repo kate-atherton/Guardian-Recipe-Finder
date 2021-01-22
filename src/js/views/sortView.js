@@ -5,15 +5,25 @@ class sortView extends View {
   _dropDownBtn;
   _btnDropdownHandler;
   _windowDropdownHandler;
+  _sortHandler;
+  _sortResultsHandler;
 
   //create dropdown menu element after search
-  renderSortOption() {
+  renderSortOption(active) {
     const markup = `
     <div class="dropdown">
       <button class="dropdown__btn">Sort by:</button>
       <div class="dropdown__content">
-        <a href="#" id="relevance" class="dropdown__option dropdown__option--active">Relevance</a>
-        <a href="#" id="newest" class="dropdown__option dropdown__option--inactive">Newest</a>
+        <a href="#" id="relevance" class="dropdown__option ${
+          active === "relevance"
+            ? "dropdown__option--active"
+            : "dropdown__option--inactive"
+        }">Relevance</a>
+        <a href="#" id="newest" class="dropdown__option ${
+          active === "newest"
+            ? "dropdown__option--active"
+            : "dropdown__option--inactive"
+        }">Newest</a>
       </div>
     </div>
     `;
@@ -38,7 +48,7 @@ class sortView extends View {
       !this._parentElement.contains(e.target) &&
       document
         .querySelector(".dropdown__content")
-        .classList.contains("dropdown__content--show")
+        ?.classList.contains("dropdown__content--show")
     ) {
       this._toggleDropdown();
     }
@@ -57,25 +67,39 @@ class sortView extends View {
     this._dropDownBtn.removeEventListener("click", this._btnDropdownHandler);
   }
 
+  _sortResults = (e) => {
+    e.preventDefault();
+    const btn = e.target.closest(".dropdown__option");
+
+    if (!btn || btn.classList.contains("dropdown__option--active")) return;
+
+    document
+      .querySelector(".dropdown__option--active")
+      .classList.add("dropdown__option--inactive");
+
+    document
+      .querySelector(".dropdown__option--active")
+      .classList.remove("dropdown__option--active");
+
+    btn.classList.remove("dropdown__option--inactive");
+    btn.classList.add("dropdown__option--active");
+
+    return this._sortHandler(btn.id);
+  };
+
   //event listener to trigger sort when inactive button is clicked
   addHandlerSort(handler) {
+    this._sortHandler = handler;
+    this._sortResultsHandler = this._sortResults.bind(this);
     this._parentElement
       .querySelector(".dropdown__content")
-      .addEventListener("click", (e) => {
-        const btn = e.target.closest(".dropdown__option");
-        if (!btn || btn.classList.contains("dropdown__option--active")) return;
+      .addEventListener("click", this._sortResultsHandler);
+  }
 
-        this._parentElement
-          .querySelector(".dropdown__option--active")
-          .classList.add("dropdown__option--inactive");
-        this._parentElement
-          .querySelector(".dropdown__option--active")
-          .classList.remove("dropdown__option--active");
-        btn.classList.add("dropdown__option--active");
-        btn.classList.remove("dropdown__option--inactive");
-
-        return handler(btn.id);
-      });
+  removeHandlerSort() {
+    this._parentElement
+      .querySelector(".dropdown__content")
+      .removeEventListener("click", this._sortResultsHandler);
   }
 }
 

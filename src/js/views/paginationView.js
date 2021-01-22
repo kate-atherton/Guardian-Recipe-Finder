@@ -21,7 +21,8 @@ class PaginationView extends View {
 
   renderPagination(state) {
     const curPage = parseInt(state.page);
-    const numPages = Math.ceil(state.posts.length / state.resultsPerPage);
+    const numPages = state.totalPages;
+    // const numPages = Math.ceil(state.posts.length / state.resultsPerPage);
     this._clear();
     const markup = this._generateMarkup(curPage, numPages);
     this._parentElement.insertAdjacentHTML("beforeend", markup);

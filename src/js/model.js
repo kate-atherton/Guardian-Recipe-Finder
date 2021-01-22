@@ -1,5 +1,5 @@
 import { getData } from "./helpers.js";
-import { API_URL, KEY, RES_PER_PAGE, TOTAL_RES } from "./config.js";
+import { API_URL, KEY, RES_PER_PAGE } from "./config.js";
 
 export const state = {
   posts: {},
@@ -7,21 +7,25 @@ export const state = {
   resultsPerPage: RES_PER_PAGE,
   searched: "",
   sort: "relevance",
+  totalPages: 0,
+  totalPosts: 0,
 };
 
-export const loadResults = async (query) => {
-  state.searched = query;
-
-  if (/\s/.test(query)) {
-    query = query.split(" ").join("%20AND%20");
+export const loadResults = async () => {
+  if (/\s/.test(state.seached)) {
+    state.searched = state.searched.split(" ").join("%20AND%20");
   }
 
   try {
     const data = await getData(
-      `${API_URL}${query}&api-key=${KEY}&order-by=${state.sort}&show-fields=all&show-tags=all&show-blocks=all&show-elements=all&page-size=${TOTAL_RES}`
+      `${API_URL}page=${state.page}&page-size=${RES_PER_PAGE}&tag=tone%2Frecipes&q=${state.searched}&api-key=${KEY}&order-by=${state.sort}&show-fields=all&show-tags=all&show-blocks=all&show-elements=all`
     );
 
-    const placeholderImg = "../...static/img/Hangman12.png";
+    state.totalPages = data.response.pages;
+    state.totalPosts = data.response.total;
+    state.page = data.response.currentPage;
+
+    const placeholderImg = "img/Hangman12.png";
 
     const results = data.response.results.map((art) => {
       return {
@@ -31,7 +35,7 @@ export const loadResults = async (query) => {
           art.blocks.main?.elements[0]?.assets[0]?.file,
           art.blocks.body[0]?.elements[0]?.assets[0]?.file,
           placeholderImg,
-        ].find((element) => element),
+        ].find(Boolean),
         preview: art.fields.trailText,
         url: art.webUrl,
       };
@@ -43,15 +47,15 @@ export const loadResults = async (query) => {
   }
 };
 
-export const getSearchResultsPage = (page = state.page) => {
+export const updateSearch = (query) => {
+  state.searched = query;
+};
+
+export const updatePage = (page = 1) => {
   state.page = page;
-
-  const start = (page - 1) * state.resultsPerPage;
-  const end = page * state.resultsPerPage;
-
-  return state.posts.slice(start, end);
 };
 
 export const updateSort = (sortOption) => {
   state.sort = sortOption;
+  console.log(state.sort);
 };

@@ -5,36 +5,42 @@ import View from "./views/view.js";
 import paginationView from "./views/paginationView.js";
 import searchView from "./views/searchView";
 import sortView from "./views/sortView";
+import queryView from "./views/queryView";
+
+const clearPage = () => {
+  resultsView._clear();
+  paginationView._clear();
+  searchView._clear();
+  queryView._clear();
+  sortView._clear();
+};
 
 const controlResults = async (sort) => {
   try {
+    clearPage();
+    model.updatePage();
     resultsView.renderSpinner();
 
-    let query;
-
     if (!sort) {
-      query = searchView.getQuery();
+      const query = searchView.getQuery();
       if (!query) {
-        resultsView._clear();
-        paginationView._clear();
-        searchView._clear();
+        clearPage();
+        queryView.renderError();
         return;
       }
-    } else {
-      query = model.state.searched;
+      model.updateSearch(query);
     }
 
-    await model.loadResults(query);
+    await model.loadResults();
 
     //Render results
-    resultsView.renderResults(
-      model.getSearchResultsPage(),
-      model.state.searched
-    );
+    resultsView.renderResults(model.state.posts);
+    queryView.renderQuery(model.state.searched);
 
     //Add a sort option
-    sortView.renderSortOption();
+    sortView.renderSortOption(model.state.sort);
     sortView.removeHandlerDropdown();
+    sortView.removeHandlerSort();
     sortView.addHandlerDropdown();
     sortView.addHandlerSort(controlSort);
 
@@ -46,21 +52,30 @@ const controlResults = async (sort) => {
   }
 };
 
-const controlSort = async (sortOption) => {
+const controlSort = (sortOption) => {
   sortView.removeHandlerDropdown();
+  sortView.removeHandlerSort();
   model.updateSort(sortOption);
-  controlResults(model.state.sort);
+  model.updatePage();
+  controlResults(true);
 };
 
-const controlPagination = (page) => {
-  //  Render new results
-  resultsView.renderResults(
-    model.getSearchResultsPage(page),
-    model.state.searched
-  );
+const controlPagination = async (page) => {
+  try {
+    //  Render new results
+    //can this be destructured?
+    model.updatePage(page);
+    await model.loadResults();
+    resultsView.renderResults(model.state.posts);
 
-  //render new pagination buttons
-  paginationView.renderPagination(model.state);
+    queryView.renderQuery(model.state.searched);
+
+    //render new pagination buttons
+    paginationView.renderPagination(model.state);
+  } catch (err) {
+    console.log(err);
+    resultsView.renderError(err);
+  }
 };
 
 const init = function () {

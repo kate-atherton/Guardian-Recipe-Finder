@@ -11,18 +11,13 @@ class searchView extends View {
     });
   }
 
-  //are these the same?
-  _clearSearched() {
-    this._searchedContainer.textContent = "";
-  }
-
   _clearInput() {
-    this._searchField.value = "";
+    this._parentElement.value = "";
   }
 
   getQuery() {
     const query = this._parentElement.value;
-    this._clear();
+    this._clearInput();
     return query;
   }
 }
