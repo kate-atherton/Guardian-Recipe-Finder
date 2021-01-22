@@ -2,7 +2,7 @@ import View from "./view.js";
 
 class PaginationView extends View {
   _parentElement = document.querySelector(".pagination");
-  _pageTop = document.querySelector(".container");
+  _pageTop = document.querySelector(".articles");
 
   addHandlerClick(handler) {
     this._parentElement.addEventListener("click", (e) => {

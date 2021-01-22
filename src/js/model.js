@@ -9,6 +9,14 @@ export const state = {
   sort: "relevance",
   totalPages: 0,
   totalPosts: 0,
+  activeTab: "articles",
+  inactiveTab: "bookmarks",
+};
+
+export const checkValidQuery = (query) => {
+  if (!/[^a-zA-Z\s]/.test(query)) {
+    return true;
+  }
 };
 
 export const loadResults = async () => {
@@ -57,5 +65,8 @@ export const updatePage = (page = 1) => {
 
 export const updateSort = (sortOption) => {
   state.sort = sortOption;
-  console.log(state.sort);
+};
+
+export const updateTab = () => {
+  [state.activeTab, state.inactiveTab] = [state.inactiveTab, state.activeTab];
 };

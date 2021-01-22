@@ -10,7 +10,11 @@
 
   <body>
     <main class="main">
-      <div class="container">
+      <div class="tab">
+        <button id="articles"class="tab__link">Article Search</button>
+        <button id="bookmarks" class="tab__link">Bookmarks</button>
+      </div>
+      <section class="tabcontent articles">
         <form class="search">
           <input
             type="text"
@@ -27,7 +31,11 @@
         <div class="query"></div>  
         <div class="results"></div>
         <div class="pagination"></div>
-      </div>
+      </section>
+      <section class="tabcontent bookmarks tabcontent__inactive">
+        <div class="bookmarks__results"></div>
+        <div class="bookmarks__pagination"></div>
+      </section>
     </main>
   </body>
 </html>

@@ -6,6 +6,7 @@ import paginationView from "./views/paginationView.js";
 import searchView from "./views/searchView";
 import sortView from "./views/sortView";
 import queryView from "./views/queryView";
+import tabView from "./views/tabView";
 
 const clearPage = () => {
   resultsView._clear();
@@ -23,9 +24,17 @@ const controlResults = async (sort) => {
 
     if (!sort) {
       const query = searchView.getQuery();
+
       if (!query) {
         clearPage();
-        queryView.renderError();
+        queryView.renderError(empty);
+        return;
+      }
+      if (!model.checkValidQuery(query)) {
+        clearPage();
+        queryView.renderError(
+          "Please only included alphabetical characters in your search query"
+        );
         return;
       }
       model.updateSearch(query);
@@ -78,9 +87,15 @@ const controlPagination = async (page) => {
   }
 };
 
+const controlTab = () => {
+  model.updateTab();
+  tabView.moveTab(model.state.activeTab, model.state.inactiveTab);
+};
+
 const init = function () {
   searchView.addHandlerRender(controlResults);
   paginationView.addHandlerClick(controlPagination);
+  tabView.addHandlerMoveTab(controlTab);
 };
 
 init();
