@@ -7,6 +7,7 @@ import searchView from "./views/searchView";
 import sortView from "./views/sortView";
 import queryView from "./views/queryView";
 import tabView from "./views/tabView";
+import bookmarksView from "./views/bookmarksView";
 
 const clearPage = () => {
   resultsView._clear();
@@ -16,18 +17,18 @@ const clearPage = () => {
   sortView._clear();
 };
 
-const controlResults = async (sort) => {
+const controlResults = async (alreadySearched, page = 1) => {
   try {
     clearPage();
-    model.updatePage();
+    model.updatePage(page);
     resultsView.renderSpinner();
 
-    if (!sort) {
+    if (!alreadySearched) {
       const query = searchView.getQuery();
 
       if (!query) {
         clearPage();
-        queryView.renderError(empty);
+        queryView.renderError();
         return;
       }
       if (!model.checkValidQuery(query)) {
@@ -55,6 +56,9 @@ const controlResults = async (sort) => {
 
     //Render initial pagination buttons
     paginationView.renderPagination(model.state);
+
+    //Add bookmark event handler
+    resultsView.addHandlerAddBookmark(controlBookmark);
   } catch (err) {
     console.log(err);
     resultsView.renderError(err);
@@ -70,26 +74,34 @@ const controlSort = (sortOption) => {
 };
 
 const controlPagination = async (page) => {
-  try {
-    //  Render new results
-    //can this be destructured?
-    model.updatePage(page);
-    await model.loadResults();
-    resultsView.renderResults(model.state.posts);
-
-    queryView.renderQuery(model.state.searched);
-
-    //render new pagination buttons
-    paginationView.renderPagination(model.state);
-  } catch (err) {
-    console.log(err);
-    resultsView.renderError(err);
-  }
+  model.updatePage(page);
+  controlResults(true, page);
 };
 
 const controlTab = () => {
   model.updateTab();
   tabView.moveTab(model.state.activeTab, model.state.inactiveTab);
+};
+
+const controlBookmark = (uniqueId) => {
+  let articleToBookmark = model.state.posts.find(
+    (element) => element.id === uniqueId
+  );
+
+  if (!articleToBookmark.bookmarked) {
+    model.addBookmark(articleToBookmark);
+    articleToBookmark.bookmarked = true;
+    resultsView.activateBookmarkIcon(uniqueId);
+  } else {
+    model.deleteBookmark(articleToBookmark);
+    articleToBookmark.bookmarked = false;
+    resultsView.deactivateBookmarkIcon(uniqueId);
+  }
+
+  bookmarksView.renderResults(model.state.bookmarks);
+  if (articleToBookmark.bookmarked) {
+    bookmarksView.addHandlerRemoveBookmark(controlBookmark, uniqueId);
+  }
 };
 
 const init = function () {

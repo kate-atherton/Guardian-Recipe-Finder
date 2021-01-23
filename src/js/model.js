@@ -11,6 +11,7 @@ export const state = {
   totalPosts: 0,
   activeTab: "articles",
   inactiveTab: "bookmarks",
+  bookmarks: [],
 };
 
 export const checkValidQuery = (query) => {
@@ -46,7 +47,15 @@ export const loadResults = async () => {
         ].find(Boolean),
         preview: art.fields.trailText,
         url: art.webUrl,
+        bookmarked: false,
+        id: art.id,
       };
+    });
+
+    results.forEach((art) => {
+      if (state.bookmarks.find((element) => element.id === art.id)) {
+        art.bookmarked = true;
+      }
     });
 
     state.posts = results;
@@ -59,7 +68,7 @@ export const updateSearch = (query) => {
   state.searched = query;
 };
 
-export const updatePage = (page = 1) => {
+export const updatePage = (page) => {
   state.page = page;
 };
 
@@ -69,4 +78,12 @@ export const updateSort = (sortOption) => {
 
 export const updateTab = () => {
   [state.activeTab, state.inactiveTab] = [state.inactiveTab, state.activeTab];
+};
+
+export const addBookmark = (article) => {
+  state.bookmarks.push(article);
+};
+
+export const deleteBookmark = (article) => {
+  state.bookmarks = state.bookmarks.filter((item) => item !== article);
 };

@@ -1,0 +1,18 @@
+.articles {
+  max-width: 80%;
+  min-height: 90rem;
+  margin: 4vw auto;
+  background-color: rgb(255, 255, 255);
+  border-radius: 1rem;
+}
+
+.recipe {
+  &__bookmarkBtn {
+    height: 3rem;
+    width: 3rem;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

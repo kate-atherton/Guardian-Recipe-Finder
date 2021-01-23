@@ -8,7 +8,6 @@ class tabView extends View {
       //hide section which is not selected??
       const tab = e.target.closest(".tab__link");
 
-      console.log(typeof tab.id);
       if (
         !tab ||
         !document
