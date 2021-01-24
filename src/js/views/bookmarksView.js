@@ -4,12 +4,13 @@ import View from "./view.js";
 class BookmarksView extends View {
   _parentElement = document.querySelector(".bookmarks__results");
 
-  renderResults(bookmarks) {
+  renderResults(bookmarks, handler) {
     this._clear();
 
     bookmarks.forEach((bookmark) => {
       const markup = this._generateMarkup(bookmark);
       this._parentElement.insertAdjacentHTML("beforeend", markup);
+      this.addHandlerRemoveBookmark(handler, bookmark.id);
     });
   }
 

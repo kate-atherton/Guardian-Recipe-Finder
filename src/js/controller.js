@@ -47,6 +47,9 @@ const controlResults = async (alreadySearched, page = 1) => {
     resultsView.renderResults(model.state.posts);
     queryView.renderQuery(model.state.searched);
 
+    //Updating bookmarks view
+    bookmarksView.renderResults(model.state.bookmarks, controlRemoveBookmark);
+
     //Add a sort option
     sortView.renderSortOption(model.state.sort);
     sortView.removeHandlerDropdown();
@@ -98,16 +101,23 @@ const controlBookmark = (uniqueId) => {
     resultsView.deactivateBookmarkIcon(uniqueId);
   }
 
-  bookmarksView.renderResults(model.state.bookmarks);
-  if (articleToBookmark.bookmarked) {
-    bookmarksView.addHandlerRemoveBookmark(controlBookmark, uniqueId);
-  }
+  bookmarksView.renderResults(model.state.bookmarks, controlRemoveBookmark);
+};
+
+const controlRemoveBookmark = (uniqueId) => {
+  let articleToRemove = model.state.bookmarks.find(
+    (element) => element.id === uniqueId
+  );
+  model.deleteBookmark(articleToRemove);
+  bookmarksView.renderResults(model.state.bookmarks, controlRemoveBookmark);
+  controlResults(true);
 };
 
 const init = function () {
   searchView.addHandlerRender(controlResults);
   paginationView.addHandlerClick(controlPagination);
   tabView.addHandlerMoveTab(controlTab);
+  bookmarksView.renderResults(model.state.bookmarks, controlRemoveBookmark);
 };
 
 init();

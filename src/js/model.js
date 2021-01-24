@@ -80,10 +80,23 @@ export const updateTab = () => {
   [state.activeTab, state.inactiveTab] = [state.inactiveTab, state.activeTab];
 };
 
+const persistBookmarks = () => {
+  localStorage.setItem("bookmarks", JSON.stringify(state.bookmarks));
+};
+
 export const addBookmark = (article) => {
   state.bookmarks.push(article);
+  persistBookmarks();
 };
 
 export const deleteBookmark = (article) => {
   state.bookmarks = state.bookmarks.filter((item) => item !== article);
+  persistBookmarks();
 };
+
+const init = () => {
+  const storage = localStorage.getItem("bookmarks");
+  if (storage) state.bookmarks = JSON.parse(storage);
+};
+
+init();
