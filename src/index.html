@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bentham&display=swap" rel="stylesheet">
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
@@ -13,32 +15,40 @@
 
   <body>
     <main class="main">
-      <div class="tab">
-        <button id="articles"class="tab__link">Article Search</button>
-        <button id="bookmarks" class="tab__link">Bookmarks</button>
-      </div>
-      <section class="tabcontent articles">
-        <form class="search">
-          <input
-            type="text"
-            class="search__field"
-            placeholder="Search articles by keyword eg. ingredient, dish, author.."
-          />
-          <button class="btn search__btn">
-            <svg class="svg">
-              <use href="img/icons.svg#icon-search"></use>
-            </svg>
-          </button>
-        </form>        
-        <div class="sort"></div>
-        <div class="query"></div>  
-        <div class="results"></div>
-        <div class="pagination"></div>
+      <header class="header" style="background-image: url('img/graniteBackground.jpg');">
+        <nav class="nav"> 
+          <button id="articles"class="tab__link">Article Search</button>             
+          <button  class="placeholder">Test</button>
+          <img class="logo" src="img/logo2.png" alt="">    
+          <button id="bookmarks" class="tab__link">Bookmarks</button>  
+        </nav>  
+      </header>      
+      <section class="tabcontent">
+        <div class="articles">
+          <form class="search">
+            <input
+              type="text"
+              class="search__field"
+              placeholder="I'm looking for..."
+            />
+            <button class="btn search__btn">
+              <svg class="svg">
+                <use href="img/icons.svg#icon-search"></use>
+              </svg>
+            </button>
+          </form>        
+          <div class="sort"></div>
+          <div class="query"></div>  
+          <div class="results"></div>
+          <div class="pagination"></div>
+        </div>      
       </section>
-      <section class="tabcontent bookmarks tabcontent__inactive">
-        <h1 class="bookmarks__header">Your bookmarked articles</h1>
+      <section class="tabcontent tabcontent__inactive">
+        <div class="bookmarks">
+          <h1 class="bookmarks__header">Your bookmarked articles</h1>
         <div class="bookmarks__results"></div>
         <div class="bookmarks__pagination"></div>
+        </div>      
       </section>
     </main>
   </body>

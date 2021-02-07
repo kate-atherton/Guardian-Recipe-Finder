@@ -1,51 +1,60 @@
-/* The container <div> - needed to position the dropdown content */
+.sort {
+  grid-row: 2 / span 1;
+  grid-column: 2 / span 1;
+  justify-self: end;
+}
+
 .dropdown {
-  position: relative;
-  display: inline-block;
+  display: grid;
+  grid-template-columns: 2fr 4fr;
+  grid-template-rows: 1fr 1fr;
+  background-color: transparent;
+  font-size: 16px;
 
-  /* Dropdown Button */
   &__btn {
-    background-color: #3498db;
-    color: white;
     padding: 16px;
-    font-size: 16px;
     border: none;
-    cursor: pointer;
-
-    /* Dropdown button on hover & focus */
-    &:hover,
-    &:focus {
-      background-color: #2980b9;
-    }
+    grid-template-rows: 1 / span 1;
+    grid-template-columns: 1 / span 1;
+    background-color: $color-secondary-light;
+    color: white;
   }
 
-  /* Dropdown Content (Hidden by Default) */
   &__content {
-    display: none;
-    position: absolute;
-    background-color: #f1f1f1;
+    grid-row: 1 / span 2;
+    grid-column: 2 / span 1;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
     width: 100%;
     overflow: auto;
     min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    z-index: 1;
-
-    /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
-    &--show {
-      display: block;
-    }
+    background-color: transparent;
   }
 
-  /* Links inside the dropdown */
-  &__content a {
+  &__option {
     color: black;
     padding: 12px 16px;
     text-decoration: none;
-    display: block;
 
-    /* Change color of dropdown links on hover */
-    &:hover {
-      background-color: #ddd;
+    &--active {
+      order: 1;
+      font-weight: 600;
+      background-color: $color-grey-light-1;
+
+      &::after {
+        content: "\25BE";
+      }
+    }
+
+    &--inactive {
+      order: 2;
+      display: none;
+      background-color: $color-grey-light-1;
+    }
+
+    &--inactive--show {
+      order: 2;
+      display: block;
     }
   }
 }

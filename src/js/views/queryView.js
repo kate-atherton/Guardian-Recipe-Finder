@@ -7,7 +7,7 @@ class QueryView extends View {
   renderQuery(query) {
     this._clear();
 
-    const searchedText = `Results for:${query}`;
+    const searchedText = `<p class="query__text">Results for: ${query}</p>`;
     this._parentElement.insertAdjacentHTML("beforeend", searchedText);
   }
 }

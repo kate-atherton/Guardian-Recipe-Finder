@@ -30,13 +30,13 @@ class sortView extends View {
     if (!document.querySelector(".dropdown")) {
       this._parentElement.insertAdjacentHTML("beforeend", markup);
     }
-    this._dropDownBtn = document.querySelector(".dropdown__btn");
+    this._dropDownBtn = document.querySelector(".dropdown__option--active");
   }
 
   _toggleDropdown() {
     document
-      .querySelector(".dropdown__content")
-      .classList.toggle("dropdown__content--show");
+      .querySelector(".dropdown__option--inactive")
+      .classList.toggle("dropdown__option--inactive--show");
   }
 
   _btnInitToggle() {
@@ -47,8 +47,8 @@ class sortView extends View {
     if (
       !this._parentElement.contains(e.target) &&
       document
-        .querySelector(".dropdown__content")
-        ?.classList.contains("dropdown__content--show")
+        .querySelector(".dropdown__option--inactive")
+        .classList.toggle("dropdown__option--inactive--show")
     ) {
       this._toggleDropdown();
     }

@@ -2,10 +2,19 @@
   margin: 5rem auto;
   text-align: center;
 
-  svg {
-    height: 6rem;
-    width: 6rem;
-    fill: $color-primary;
+  &__icon {
+    height: 20rem;
+    width: 20rem;
     animation: rotate 2s infinite linear;
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0);
+  }
+
+  100% {
+    transform: rotate(360deg);
   }
 }

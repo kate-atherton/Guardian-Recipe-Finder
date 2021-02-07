@@ -1,0 +1,43 @@
+.articles {
+  display: grid;
+  grid-template-rows: 6rem 10rem minmax(min-content, max-content) 10rem;
+  grid-template-columns: 2fr 1fr;
+}
+
+.query {
+  width: 60rem;
+  grid-row: 2 / span 1;
+  grid-column: 1 / span 1;
+  justify-self: start;
+  align-self: center;
+
+  &__text {
+    font-size: 4rem;
+    color: $color-primary;
+    letter-spacing: 1px;
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    &::before,
+    &::after {
+      content: "";
+      flex: 1;
+      border-bottom: 1px solid $color-primary;
+    }
+
+    &::before {
+      margin-right: 0.25em;
+    }
+
+    &::after {
+      margin-left: 0.25em;
+    }
+  }
+}
+
+.results {
+  grid-row: 3 / span 1;
+  grid-column: 1 / span 2;
+}

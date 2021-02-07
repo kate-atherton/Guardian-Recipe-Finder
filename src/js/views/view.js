@@ -1,4 +1,5 @@
 import icons from "../../../static/img/icons.svg";
+import foodIcon from "../../../static/img/spinner.svg";
 
 export default class View {
   _clear() {
@@ -8,9 +9,7 @@ export default class View {
   renderSpinner() {
     const markup = `
                   <div class="spinner">
-                    <svg>
-                      <use href="${icons}#icon-loader"></use>
-                    </svg>
+                    <img src="${foodIcon}" class="spinner__icon" alt="Spinner icon">
                   </div>
                 `;
     this._clear();

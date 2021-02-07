@@ -56,15 +56,15 @@ class PaginationView extends View {
     });
 
     return `
-      <button class="pagination__btn pagination__btn${
+      <button class="pagination__btn pagination__arrow${
         curPage !== 1 ? "" : "--active"
       } pagination__arrow"
         
       }" data-goto="${curPage - 1}">Previous</button>
       ${buttonHtml}
-      <button class="pagination__btn pagination__btn${
+      <button class="pagination__btn pagination__arrow${
         curPage !== numPages ? "" : "--active"
-      } pagination__arrow" data-goto="${curPage + 1}">Next</button>
+      }" data-goto="${curPage + 1}">Next</button>
     `;
   }
 }

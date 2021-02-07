@@ -1,0 +1,53 @@
+.search {
+  grid-row: 1 / span 1;
+  grid-column: 1 / span 1;
+  justify-self: start;
+  align-self: center;
+  display: grid;
+  width: 30rem;
+  margin-left: 2rem;
+  box-shadow: $shadow-medium;
+  grid-template-columns: 8fr 2fr;
+  border: none;
+  border-radius: 1rem;
+  overflow: hidden;
+  background-color: $color-grey-light-1;
+
+  &:focus {
+    outline: none;
+  }
+
+  &__field {
+    border: none;
+    padding: 1rem 1.5rem;
+    font-size: 2rem;
+    background-color: inherit;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &__btn {
+    background-color: inherit;
+    // box-shadow: -11px 0px 19px 0px rgba(50, 50, 50, 0.75);
+    border: none;
+    font-size: 1.5rem;
+    font-weight: 600;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.svg {
+  height: 1.5rem;
+  width: 2.25rem;
+  fill: currentColor;
+  color: $color-primary;
+}
