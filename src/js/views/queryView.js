@@ -5,9 +5,13 @@ class QueryView extends View {
   _errorMessage = "No search term was entered. Please try again";
 
   renderQuery(query) {
+    console.log(query);
     this._clear();
 
-    const searchedText = `<p class="query__text">Results for: ${query}</p>`;
+    const searchedText = `<p class="query__text"> ${
+      query === "default" ? "The Latest Articles" : `Results for: ${query}</p>`
+    }`;
+
     this._parentElement.insertAdjacentHTML("beforeend", searchedText);
   }
 }

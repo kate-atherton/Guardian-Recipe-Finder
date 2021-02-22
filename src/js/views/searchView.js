@@ -5,6 +5,11 @@ class searchView extends View {
   _searchBtn = document.querySelector(".search__btn");
 
   addHandlerRender(handler) {
+    window.addEventListener("load", function (e) {
+      e.preventDefault();
+      return handler(true);
+    });
+
     this._searchBtn.addEventListener("click", function (e) {
       e.preventDefault();
       return handler();

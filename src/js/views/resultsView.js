@@ -19,17 +19,18 @@ class ResultsView extends View {
         <div id="${post.id}" class="recipe">
             <img class="recipe__image" src="${post.image}" alt="${post.title}">
             <div class="recipe__details">
+            <svg class="recipe__bookmarkBtn">
+                  <use class="recipe__bookmarkIcon" href="${icons}#icon-bookmark${
+      post.bookmarked ? "-fill" : ""
+    }"></use>
+                </svg>
                 <h1 class="recipe__header">${post.headline}</h1>
                 <p class="recipe__description">${post.preview}</p>
                 <a class="recipe__link" target="_blank" href="${
                   post.url
                 }">Go to recipe</a>
           
-                <svg class="recipe__bookmarkBtn">
-                  <use class="recipe__bookmarkIcon" href="${icons}#icon-bookmark${
-      post.bookmarked ? "-fill" : ""
-    }"></use>
-                </svg>
+                
             </div>
         </div>
     `;

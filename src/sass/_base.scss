@@ -139,5 +139,6 @@ body {
 
 main {
   display: grid;
-  grid-template-rows: 35vh 75vh;
+  grid-template-rows: 25vh 75vh;
+  background-size: contain;
 }

@@ -5,7 +5,7 @@ export const state = {
   posts: {},
   page: 1,
   resultsPerPage: RES_PER_PAGE,
-  searched: "",
+  searched: "default",
   sort: "relevance",
   totalPages: 0,
   totalPosts: 0,
@@ -21,6 +21,7 @@ export const checkValidQuery = (query) => {
 };
 
 export const loadResults = async () => {
+  console.log("loading results");
   if (/\s/.test(state.seached)) {
     state.searched = state.searched.split(" ").join("%20AND%20");
   }

@@ -5,7 +5,7 @@
 }
 
 .query {
-  width: 60rem;
+  width: 100%;
   grid-row: 2 / span 1;
   grid-column: 1 / span 1;
   justify-self: start;
@@ -23,21 +23,17 @@
     &::before,
     &::after {
       content: "";
-      flex: 1;
       border-bottom: 1px solid $color-primary;
     }
 
     &::before {
       margin-right: 0.25em;
+      flex: 0.5;
     }
 
     &::after {
       margin-left: 0.25em;
+      flex: 2;
     }
   }
-}
-
-.results {
-  grid-row: 3 / span 1;
-  grid-column: 1 / span 2;
 }

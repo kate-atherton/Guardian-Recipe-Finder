@@ -1,10 +1,180 @@
-.articles {
+.results {
+  margin: 0 2rem;
+  grid-row: 3 / span 1;
+  grid-column: 1 / span 2;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: repeat(auto, 50rem);
+  grid-gap: 2rem;
+  grid-template-areas:
+    "one one two"
+    "three four five"
+    "six seven seven"
+    "eight nine ten";
+  background-color: white;
+
+  & > :nth-child(2),
+  & > :nth-child(3),
+  & > :nth-child(4),
+  & > :nth-child(5),
+  & > :nth-child(6),
+  & > :nth-child(8),
+  & > :nth-child(9),
+  & > :nth-child(10) {
+    display: grid;
+    grid-template-rows: 50% 50%;
+    justify-items: center;
+
+    .recipe__details {
+      padding-top: 1rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .recipe__header {
+      font-size: 2rem;
+    }
+
+    .recipe__description {
+      font-size: 1.5rem;
+      margin-top: 1rem;
+    }
+
+    .recipe__bookmarkBtn {
+      height: 3rem;
+      width: 3rem;
+      top: 50%;
+      right: 3%;
+      align-self: flex-end;
+      transform: translateY(-50%);
+    }
+  }
+
+  & > :nth-child(1),
+  & > :nth-child(7) {
+    display: grid;
+    grid-template-columns: 60% 40%;
+    justify-items: center;
+    position: relative;
+
+    .recipe__details {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      padding-left: 1.5rem;
+    }
+
+    .recipe__header {
+      font-size: 3rem;
+    }
+
+    .recipe__description {
+      margin-top: 1rem;
+      font-size: 2rem;
+    }
+
+    .recipe__bookmarkBtn {
+      height: 3.5rem;
+      width: 3.5rem;
+      left: 60%;
+      transform: translateX(-60%) translateY(-160%);
+      top: 100%;
+    }
+  }
+
+  & > :nth-child(1) {
+    grid-area: one;
+  }
+
+  & > :nth-child(2) {
+    grid-area: two;
+  }
+
+  & > :nth-child(3) {
+    grid-area: three;
+  }
+
+  & > :nth-child(4) {
+    grid-area: four;
+  }
+
+  & > :nth-child(5) {
+    grid-area: five;
+  }
+
+  & > :nth-child(6) {
+    grid-area: six;
+  }
+
+  & > :nth-child(7) {
+    grid-area: seven;
+  }
+
+  & > :nth-child(8) {
+    grid-area: eight;
+  }
+
+  & > :nth-child(9) {
+    grid-area: nine;
+  }
+
+  & > :nth-child(10) {
+    grid-area: ten;
+  }
 }
 
 .recipe {
+  height: 50rem;
+  background-color: $color-grey-light-1;
+  position: relative;
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    overflow: hidden;
+  }
+
+  &__details {
+    justify-self: stretch;
+  }
+
+  &__header {
+    font-weight: 600;
+    color: black;
+  }
+
+  &__description {
+    color: $color-primary;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: black;
+    margin: 1rem 0;
+    font-size: 2rem;
+    font-weight: 600;
+
+    &::before,
+    &::after {
+      content: "";
+      border-bottom: 1px solid black;
+    }
+
+    &::before {
+      margin-right: 0.25em;
+      flex: 2;
+    }
+  }
+
   &__bookmarkBtn {
-    height: 3rem;
-    width: 3rem;
+    background-color: $color-primary-light;
+    fill: white;
+    position: absolute;
+    padding: 0.5rem;
 
     &:hover {
       cursor: pointer;
