@@ -6,16 +6,6 @@ export default class View {
     this._parentElement.innerHTML = "";
   }
 
-  renderSpinner() {
-    const markup = `
-                  <div class="spinner">
-                    <img src="${foodIcon}" class="spinner__icon" alt="Spinner icon">
-                  </div>
-                `;
-    this._clear();
-    this._parentElement.insertAdjacentHTML("afterbegin", markup);
-  }
-
   renderError(message = this._errorMessage) {
     const markup = `
                   <div class="error">

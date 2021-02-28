@@ -8,6 +8,9 @@ import sortView from "./views/sortView";
 import queryView from "./views/queryView";
 import tabView from "./views/tabView";
 import bookmarksView from "./views/bookmarksView";
+import noContentView from "./views/noContentView";
+
+// import { debug } from "webpack";
 
 const clearPage = () => {
   resultsView._clear();
@@ -28,30 +31,31 @@ const controlResults = async (alreadySearched, page = 1) => {
       model.updateSearch(query);
       if (!query) {
         clearPage();
-        queryView.renderError(
+        noContentView.renderError(
           "You did not enter a search query, please try again"
         );
         return;
       } else if (!model.checkValidQuery(query)) {
         clearPage();
-        queryView.renderError(
+        noContentView.renderError(
           "Please only included alphabetical characters in your search query"
         );
         return;
       }
     }
 
-    resultsView.renderSpinner();
+    noContentView.renderSpinner();
     await model.loadResults();
 
     //sort and pagination should only load if there are results!
 
     if (Object.keys(model.state.posts).length === 0) {
-      queryView.renderError("There were no results for your query");
+      noContentView.renderError("There were no results for your query");
       resultsView._clear();
       return;
     }
 
+    noContentView._clear();
     resultsView.renderResults(model.state.posts);
     queryView.renderQuery(model.state.searched);
     paginationView.renderPagination(model.state);

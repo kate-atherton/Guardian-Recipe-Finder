@@ -1,6 +1,4 @@
 import View from "./view.js";
-import icons from "../../../static/img/icons.svg";
-import foodIcon from "../../../static/img/spinner.svg";
 import queryIcon from "../../../static/img/search.svg";
 
 class QueryView extends View {

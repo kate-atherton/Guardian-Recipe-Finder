@@ -36,20 +36,4 @@
       flex: 2;
     }
   }
-
-  &__error {
-    grid-column: 1 / span 2;
-
-    display: flex;
-    font-size: 2.5rem;
-    align-items: center;
-  }
-
-  &__icon {
-    height: 8rem;
-    width: 8rem;
-    fill: currentColor;
-    color: $color-primary;
-    background-color: transparent;
-  }
 }
