@@ -1,5 +1,6 @@
 $color-primary: #797771; //normal text
 $color-primary-light: #797771; //light text
+$color-primary-dark: #575652;
 
 $color-secondary-dark: #9e7767; //normal text
 $color-secondary-light: #c6afa5; //light text
@@ -115,6 +116,10 @@ blockquote,
 q {
   quotes: "" "";
 }
+
+*:not(input) {
+  cursor: default;
+}
 //
 
 * {
@@ -134,11 +139,21 @@ html {
 
 body {
   line-height: 1.6;
-  background-color: $color-grey-light-1;
 }
 
 main {
-  display: grid;
-  grid-template-rows: 25vh 75vh;
   background-size: contain;
+  display: grid;
+  justify-content: center;
+  overflow: auto;
+}
+
+.content {
+  display: grid;
+  grid-template-rows: 15vh minmax(85vh, max-content);
+  margin-top: 10rem;
+  margin-bottom: 5rem;
+  width: 130rem;
+  box-shadow: $shadow-dark;
+  background-color: white;
 }

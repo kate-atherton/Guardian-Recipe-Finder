@@ -21,49 +21,57 @@ const controlResults = async (alreadySearched, page = 1) => {
   try {
     clearPage();
     model.updatePage(page);
-    resultsView.renderSpinner();
+    let query;
 
     if (!alreadySearched) {
-      const query = searchView.getQuery();
-
+      query = searchView.getQuery();
+      model.updateSearch(query);
       if (!query) {
         clearPage();
-        queryView.renderError();
+        queryView.renderError(
+          "You did not enter a search query, please try again"
+        );
         return;
-      }
-      if (!model.checkValidQuery(query)) {
+      } else if (!model.checkValidQuery(query)) {
         clearPage();
         queryView.renderError(
           "Please only included alphabetical characters in your search query"
         );
         return;
       }
-      model.updateSearch(query);
     }
 
+    resultsView.renderSpinner();
     await model.loadResults();
 
-    //Render results
+    //sort and pagination should only load if there are results!
+
+    if (Object.keys(model.state.posts).length === 0) {
+      queryView.renderError("There were no results for your query");
+      resultsView._clear();
+      return;
+    }
+
     resultsView.renderResults(model.state.posts);
     queryView.renderQuery(model.state.searched);
+    paginationView.renderPagination(model.state);
 
     //Updating bookmarks view
     bookmarksView.renderResults(model.state.bookmarks, controlRemoveBookmark);
 
+    //check if its default or not
     //Add a sort option
-    sortView.renderSortOption(model.state.sort);
-    sortView.removeHandlerDropdown();
-    sortView.removeHandlerSort();
-    sortView.addHandlerDropdown();
-    sortView.addHandlerSort(controlSort);
-
-    //Render initial pagination buttons
-    paginationView.renderPagination(model.state);
+    if (model.state.searched !== "default") {
+      sortView.renderSortOption(model.state.sort);
+      sortView.removeHandlerDropdown();
+      sortView.removeHandlerSort();
+      sortView.addHandlerDropdown();
+      sortView.addHandlerSort(controlSort);
+    }
 
     //Add bookmark event handler
     resultsView.addHandlerAddBookmark(controlBookmark);
   } catch (err) {
-    console.log(err);
     resultsView.renderError(err);
   }
 };

@@ -15,41 +15,43 @@
 
   <body>
     <main class="main" style="background-image: url('img/background.jpg')">
-      <header class="header">
-        <nav class="nav"> 
-          <button id="articles"class="tab__link">Article Search</button>             
-          <button  class="placeholder">Test</button>
-          <img class="logo" src="img/logo2.png" alt="">    
-          <button id="bookmarks" class="tab__link">Bookmarks</button>  
-        </nav>  
-      </header>      
-      <section class="tabcontent">
-        <div class="articles">
-          <form class="search">
-            <input
-              type="text"
-              class="search__field"
-              placeholder="I'm looking for..."
-            />
-            <button class="btn search__btn">
-              <svg class="svg">
-                <use href="img/icons.svg#icon-search"></use>
-              </svg>
-            </button>
-          </form>        
-          <div class="sort"></div>
-          <div class="query"></div>  
-          <div class="results"></div>
-          <div class="pagination"></div>
-        </div>      
-      </section>
-      <section class="tabcontent tabcontent__inactive">
-        <div class="bookmarks">
-          <h1 class="bookmarks__header">Your bookmarked articles</h1>
-        <div class="bookmarks__results"></div>
-        <div class="bookmarks__pagination"></div>
-        </div>      
-      </section>
+      <section class="content">
+        <header class="header">
+          <nav class="nav">         
+            <button id="articles"class="tab__link">Article Search</button> 
+            <img class="logo" src="img/logo2.png" alt="">  
+            <button  class="placeholder">Test</button>               
+            <button id="bookmarks" class="tab__link">Bookmarks</button>  
+          </nav>  
+        </header>      
+        <section class="tabcontent">
+          <div class="articles">
+            <form class="search">
+              <input
+                type="text"
+                class="search__field"
+                placeholder="I'm looking for..."
+              />
+              <button class="btn search__btn">
+                <svg class="svg">
+                  <use href="img/icons.svg#icon-search"></use>
+                </svg>
+              </button>
+            </form>        
+            <div class="sort"></div>
+            <div class="query"></div>  
+            <div class="results"></div>
+            <div class="pagination"></div>
+          </div>      
+        </section>
+        <section class="tabcontent tabcontent__inactive">
+          <div class="bookmarks">
+            <h1 class="bookmarks__header">Your bookmarked articles</h1>
+          <div class="bookmarks__results"></div>
+          <div class="bookmarks__pagination"></div>
+          </div>      
+        </section>
+      </section>    
     </main>
   </body>
 </html>

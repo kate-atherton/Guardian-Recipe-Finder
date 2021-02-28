@@ -21,7 +21,6 @@ export const checkValidQuery = (query) => {
 };
 
 export const loadResults = async () => {
-  console.log("loading results");
   if (/\s/.test(state.seached)) {
     state.searched = state.searched.split(" ").join("%20AND%20");
   }
@@ -35,7 +34,7 @@ export const loadResults = async () => {
     state.totalPosts = data.response.total;
     state.page = data.response.currentPage;
 
-    const placeholderImg = "img/Hangman12.png";
+    const placeholderImg = "img/Placeholder.jpg";
 
     const results = data.response.results.map((art) => {
       return {
@@ -54,6 +53,7 @@ export const loadResults = async () => {
     });
 
     results.forEach((art) => {
+      art.preview = art.preview.replace(/(<p>|<\/p>)/g, "");
       if (state.bookmarks.find((element) => element.id === art.id)) {
         art.bookmarked = true;
       }

@@ -1,9 +1,7 @@
 .tabcontent {
-  width: 120rem;
   height: fit-content;
-  min-height: 80rem;
-  margin: 0 auto;
   background-color: rgb(255, 255, 255);
+  padding: 2rem 3rem 0 3rem;
 
   &__inactive {
     display: none;

@@ -1,11 +1,13 @@
 import View from "./view.js";
+import icons from "../../../static/img/icons.svg";
+import foodIcon from "../../../static/img/spinner.svg";
+import queryIcon from "../../../static/img/search.svg";
 
 class QueryView extends View {
   _parentElement = document.querySelector(".query");
   _errorMessage = "No search term was entered. Please try again";
 
   renderQuery(query) {
-    console.log(query);
     this._clear();
 
     const searchedText = `<p class="query__text"> ${
@@ -13,6 +15,17 @@ class QueryView extends View {
     }`;
 
     this._parentElement.insertAdjacentHTML("beforeend", searchedText);
+  }
+
+  renderError(message = this._errorMessage) {
+    const markup = `             
+                <div class="query__error">
+                      <img src="${queryIcon}" class="query__icon" alt="Query icon">
+                    <p>${message}</p>
+                </div>
+                `;
+    this._clear();
+    this._parentElement.insertAdjacentHTML("afterbegin", markup);
   }
 }
 
