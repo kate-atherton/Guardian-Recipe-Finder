@@ -7,7 +7,12 @@ class PaginationView extends View {
   addHandlerClick(handler) {
     this._parentElement.addEventListener("click", (e) => {
       const btn = e.target.closest(".pagination__btn");
-      if (!btn || btn.classList.contains("pagination__btn--active")) return;
+      if (
+        !btn ||
+        btn.classList.contains("pagination__btn--active") ||
+        btn.classList.contains("pagination__arrow--disabled")
+      )
+        return;
 
       const goToPage = btn.classList.contains("pagination__arrow")
         ? btn.dataset.goto
@@ -22,7 +27,6 @@ class PaginationView extends View {
   renderPagination(state) {
     const curPage = parseInt(state.page);
     const numPages = state.totalPages;
-    // const numPages = Math.ceil(state.posts.length / state.resultsPerPage);
     this._clear();
     const markup = this._generateMarkup(curPage, numPages);
     this._parentElement.insertAdjacentHTML("beforeend", markup);
@@ -56,14 +60,14 @@ class PaginationView extends View {
     });
 
     return `
-      <button class="pagination__btn pagination__arrow${
-        curPage !== 1 ? "" : "--active"
-      } pagination__arrow"
+      <button class="pagination__btn pagination__arrow pagination__arrow${
+        curPage !== 1 ? "--enabled" : "--disabled"
+      }"
         
       }" data-goto="${curPage - 1}">Previous</button>
       ${buttonHtml}
-      <button class="pagination__btn pagination__arrow${
-        curPage !== numPages ? "" : "--active"
+      <button class="pagination__btn pagination__arrow pagination__arrow${
+        curPage !== numPages ? "--enabled" : "--disabled"
       }" data-goto="${curPage + 1}">Next</button>
     `;
   }

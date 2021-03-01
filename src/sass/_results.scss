@@ -31,11 +31,11 @@
     }
 
     .recipe__header {
-      font-size: 2rem;
+      font-size: 2.25rem;
     }
 
     .recipe__description {
-      font-size: 1.5rem;
+      font-size: 1.75rem;
       margin-top: 1rem;
     }
 
@@ -126,6 +126,7 @@
   height: 50rem;
   background-color: $color-grey-light-1;
   position: relative;
+  box-shadow: $shadow-light;
 
   &__image {
     width: 100%;
@@ -140,26 +141,39 @@
 
   &__header {
     font-weight: 600;
-    color: black;
+    color: $color-grey-dark-1;
   }
 
   &__description {
-    color: $color-primary;
+    color: $color-grey-dark-2;
   }
 
   &__link {
     display: flex;
     align-items: center;
     text-decoration: none;
-    color: black;
+    color: $color-grey-dark-1;
     margin: 1rem 0;
     font-size: 2rem;
     font-weight: 600;
+    overflow: hidden;
+    background: linear-gradient(
+      to right,
+      $color-grey-dark-3,
+      $color-grey-dark-4 50%,
+      $color-grey-dark-1 50%
+    );
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% 100%;
+    background-position: 100%;
+    transition: background-position 275ms ease;
 
     &::before,
     &::after {
       content: "";
-      border-bottom: 1px solid black;
+      border-bottom: 1px solid $color-grey-dark-1;
     }
 
     &::before {
@@ -169,11 +183,14 @@
 
     &:hover {
       cursor: pointer;
+      background-position: 0 100%;
+      // color: $color-grey-dark-4;
+      // font-weight: 800;
     }
   }
 
   &__bookmarkBtn {
-    background-color: $color-primary-light;
+    background-color: $color-primary;
     fill: white;
     position: absolute;
     padding: 0.5rem;

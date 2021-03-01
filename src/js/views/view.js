@@ -1,5 +1,4 @@
 import icons from "../../../static/img/icons.svg";
-import foodIcon from "../../../static/img/spinner.svg";
 
 export default class View {
   _clear() {

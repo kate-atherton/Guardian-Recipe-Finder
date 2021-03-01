@@ -2,7 +2,7 @@
   grid-row: 1 / span 1;
   grid-column: 1 / span 1;
   justify-self: start;
-  align-self: center;
+  align-self: end;
   display: grid;
   width: 30rem;
   box-shadow: $shadow-light;
@@ -17,6 +17,7 @@
   }
 
   &__field {
+    color: $color-grey-dark-2;
     border: none;
     padding: 1rem 1.5rem;
     font-size: 2rem;
@@ -29,7 +30,6 @@
 
   &__btn {
     background-color: inherit;
-    // box-shadow: -11px 0px 19px 0px rgba(50, 50, 50, 0.75);
     border: none;
     font-size: 1.5rem;
     font-weight: 600;
@@ -45,8 +45,8 @@
 }
 
 .svg {
-  height: 1.5rem;
-  width: 2.25rem;
+  height: 2rem;
+  width: 3rem;
   fill: currentColor;
-  color: $color-primary;
+  color: $color-grey-dark-2;
 }

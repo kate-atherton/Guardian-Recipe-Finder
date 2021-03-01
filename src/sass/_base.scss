@@ -1,17 +1,29 @@
-$color-primary: #797771; //normal text
-$color-primary-light: #797771; //light text
-$color-primary-dark: #575652;
+// $color-primary: #797771; //normal text
+// $color-primary-light: #797771; //light text
+// $color-primary-dark: #575652;
 
-$color-secondary-dark: #9e7767; //normal text
-$color-secondary-light: #c6afa5; //light text
+// $color-secondary-dark: #9e7767; //normal text
+// $color-secondary-light: #c6afa5; //light text
 
-$color-grey-light-1: #f6f5f4; //background
-$color-grey-light-2: rgb(121, 119, 113); //dark border
-$color-grey-light-3: rgb(209, 199, 190); //light border
+// $color-grey-light-1: #f6f5f4; //background
+// $color-grey-light-2: rgb(121, 119, 113); //dark border
+// $color-grey-light-3: rgb(209, 199, 190); //light border
 
 $shadow-dark: 0 2rem 6rem rgba(0, 0, 0, 0.3);
 $shadow-medium: 0 2rem 5rem rgba(0, 0, 0, 0.15);
 $shadow-light: 0 2rem 5rem rgba(0, 0, 0, 0.06);
+
+$color-primary: #052962;
+$color-primary-light: #114290;
+$color-primary-dark: #01112a;
+
+$color-grey-light-1: #f9f7f6;
+$color-grey-light-2: #aaa;
+
+$color-grey-dark-1: #54483a; //normal text
+$color-grey-dark-2: #6d5d4b; //light text
+$color-grey-dark-3: #2c261f;
+$color-grey-dark-4: #181411;
 
 //Meyer Reset
 html,
@@ -155,5 +167,5 @@ main {
   margin-bottom: 5rem;
   width: 130rem;
   box-shadow: $shadow-dark;
-  background-color: white;
+  background-color: #ffffff;
 }

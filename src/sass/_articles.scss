@@ -1,6 +1,6 @@
 .articles {
   display: grid;
-  grid-template-rows: 6rem 10rem minmax(min-content, max-content) 10rem;
+  grid-template-rows: 5rem 12rem minmax(min-content, max-content) 10rem;
   grid-template-columns: 2fr 1fr;
 }
 
@@ -13,7 +13,7 @@
 
   &__text {
     font-size: 4rem;
-    color: $color-primary;
+    color: $color-grey-dark-1;
     letter-spacing: 1px;
     padding: 2rem;
     display: flex;
@@ -23,7 +23,7 @@
     &::before,
     &::after {
       content: "";
-      border-bottom: 1px solid $color-primary;
+      border-bottom: 1px solid $color-grey-dark-1;
     }
 
     &::before {
