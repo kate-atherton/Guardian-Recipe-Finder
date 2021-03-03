@@ -14,10 +14,12 @@
     border: none;
     background-color: inherit;
     font-size: 2.5rem;
-    width: 4rem;
+    width: 5rem;
 
     &:hover {
       cursor: pointer;
+      color: $color-grey-dark-4;
+      font-weight: 800;
     }
 
     &:focus {
@@ -25,7 +27,7 @@
     }
 
     &--active {
-      color: $color-grey-dark-3;
+      color: $color-grey-dark-4;
       font-weight: 800;
       cursor: auto;
       border: none;
@@ -36,9 +38,13 @@
 
   &__arrow {
     width: 10rem;
-    color: $color-grey-dark-1;
+    color: $color-grey-dark-2;
     background-color: inherit;
     font-size: 2.5rem;
+
+    &--disabled {
+      display: none;
+    }
 
     &--disabled:hover {
       cursor: default;
