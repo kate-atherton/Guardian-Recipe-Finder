@@ -148,24 +148,22 @@
       justify-items: center;
 
       .recipe__details {
-        padding: 1rem 1rem 0 1rem;
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
+        justify-content: space-evenly;
+        padding: 0 1.5rem;
       }
 
       .recipe__header {
-        font-size: 2.25rem;
+        font-size: 3rem;
       }
 
       .recipe__description {
-        font-size: 1.75rem;
         margin-top: 1rem;
+        font-size: 2rem;
       }
 
       .recipe__bookmarkBtn {
-        height: 3rem;
-        width: 3rem;
         top: 50%;
         right: 3%;
         align-self: flex-end;
@@ -200,8 +198,6 @@
       }
 
       .recipe__bookmarkBtn {
-        height: 3.5rem;
-        width: 3.5rem;
         left: 60%;
         transform: translateX(-60%) translateY(-160%);
         top: 100%;
@@ -213,7 +209,7 @@
   @media only screen and (max-width: $bp-small) {
     display: grid;
     grid-template-columns: 1fr;
-    grid-gap: 2rem;
+    grid-gap: 4rem;
     grid-template-areas:
       "one"
       "two "
@@ -227,35 +223,47 @@
       "ten";
 
     & > :nth-child(-n + 10) {
-      height: 50rem;
+      height: 40rem;
       display: grid;
-      grid-template-rows: 50% 50%;
-      grid-template-columns: 1fr;
+      grid-template-columns: 50% 50%;
+      grid-template-rows: 40rem;
       justify-items: center;
 
-      .recipe__details {
-        padding: 1rem 1rem 0 1rem;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-      }
-
-      .recipe__header {
-        font-size: 2.25rem;
-      }
-
-      .recipe__description {
-        font-size: 1.75rem;
-        margin-top: 1rem;
-      }
-
       .recipe__bookmarkBtn {
-        height: 3rem;
-        width: 3rem;
-        top: 50%;
-        right: 3%;
-        align-self: flex-end;
-        transform: translateY(-50%);
+        height: 3.5rem;
+        width: 3.5rem;
+        left: 50%;
+        top: 85%;
+        transform: translateX(-50%) translateY(0);
+      }
+    }
+
+    & > :nth-child(odd) {
+      .recipe__details {
+        grid-column: 2 / span 1;
+      }
+
+      .recipe__image {
+        grid-column: 1 / span 1;
+      }
+
+      .recipe__link {
+        padding-left: 2rem;
+      }
+    }
+
+    & > :nth-child(even) {
+      .recipe__details {
+        grid-column: 1 / span 1;
+        grid-row: 1 / span 1;
+      }
+
+      .recipe__image {
+        grid-column: 2 / span 1;
+      }
+
+      .recipe__link {
+        padding-right: 2rem;
       }
     }
   }
