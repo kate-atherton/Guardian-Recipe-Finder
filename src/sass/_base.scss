@@ -144,12 +144,10 @@ html {
   box-sizing: border-box;
   font-size: 62.5%; //10px/16px = 62.5% -> 1 rem =  10 px
 
-  //1rem = 8px
   @media only screen and (max-width: $bp-medium) {
-    font-size: 50%;
+    font-size: 40%;
   }
 
-  //1rem - 5px
   @media only screen and (max-width: $bp-small) {
     font-size: 31%;
   }
@@ -177,6 +175,7 @@ main {
   background-color: #ffffff;
 
   @media only screen and (max-width: $bp-medium) {
+    grid-template-rows: 20vh minmax(85vh, max-content);
     width: 100vw;
     height: 100vw;
     margin-top: 0;
@@ -188,4 +187,4 @@ main {
 //maybe remove 1200 break, if nothing needs to change
 //at 1000, goes to two columns, looks good, ,maybe at 900 instead?
 //at 900, it should take up the entire screen
-//at 600, go to one column
+//at 600, go to one column - DONE

@@ -125,7 +125,7 @@
   @media only screen and (max-width: $bp-medium) {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-gap: 2rem;
+    grid-gap: 4rem;
     grid-template-areas:
       "one one"
       "two three"
@@ -151,19 +151,24 @@
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
-        padding: 0 1.5rem;
+        padding: 1rem 1rem 0 1rem;
       }
 
       .recipe__header {
         font-size: 3rem;
+        -webkit-line-clamp: 2; /* number of lines to show */
       }
 
       .recipe__description {
         margin-top: 1rem;
         font-size: 2rem;
+        -webkit-line-clamp: 2; /* number of lines to show */
+        overflow: hidden;
       }
 
       .recipe__bookmarkBtn {
+        height: 3.5rem;
+        width: 3.5rem;
         top: 50%;
         right: 3%;
         align-self: flex-end;
@@ -175,10 +180,10 @@
     & > :nth-child(4),
     & > :nth-child(7),
     & > :nth-child(10) {
-      height: 30rem;
+      height: 40rem;
       display: grid;
       grid-template-columns: 60% 40%;
-      grid-template-rows: 30rem;
+      grid-template-rows: 40rem;
       justify-items: center;
 
       .recipe__details {
@@ -190,14 +195,18 @@
 
       .recipe__header {
         font-size: 3rem;
+        -webkit-line-clamp: 3; /* number of lines to show */
       }
 
       .recipe__description {
         margin-top: 1rem;
         font-size: 2rem;
+        -webkit-line-clamp: 3; /* number of lines to show */
       }
 
       .recipe__bookmarkBtn {
+        height: 3.5rem;
+        width: 3.5rem;
         left: 60%;
         transform: translateX(-60%) translateY(-160%);
         top: 100%;
@@ -209,7 +218,6 @@
   @media only screen and (max-width: $bp-small) {
     display: grid;
     grid-template-columns: 1fr;
-    grid-gap: 4rem;
     grid-template-areas:
       "one"
       "two "
@@ -230,11 +238,17 @@
       justify-items: center;
 
       .recipe__bookmarkBtn {
-        height: 3.5rem;
-        width: 3.5rem;
         left: 50%;
         top: 85%;
         transform: translateX(-50%) translateY(0);
+      }
+
+      .recipe__header {
+        -webkit-line-clamp: 2; /* number of lines to show */
+      }
+
+      .recipe__description {
+        -webkit-line-clamp: 3; /* number of lines to show */
       }
     }
 
@@ -289,6 +303,12 @@
   &__header {
     font-weight: 600;
     color: $color-grey-dark-1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* number of lines to show */
+    -webkit-box-orient: vertical;
   }
 
   &__description {
