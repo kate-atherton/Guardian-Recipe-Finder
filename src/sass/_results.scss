@@ -3,7 +3,7 @@
   grid-column: 1 / span 2;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: repeat(auto, 50rem);
+  grid-template-rows: repeat(auto, 35rem);
   grid-gap: 2rem;
   grid-template-areas:
     "one one two"
@@ -24,24 +24,26 @@
     justify-items: center;
 
     .recipe__details {
-      padding: 1rem 1rem 0 1rem;
+      padding: 1rem 2rem 0 2rem;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
     }
 
     .recipe__header {
-      font-size: 2.25rem;
+      font-size: 1.75rem;
+      -webkit-line-clamp: 2; /* number of lines to show */
     }
 
     .recipe__description {
-      font-size: 1.75rem;
+      font-size: 1.25rem;
       margin-top: 1rem;
+      -webkit-line-clamp: 3; /* number of lines to show */
     }
 
     .recipe__bookmarkBtn {
-      height: 3rem;
-      width: 3rem;
+      height: 2.5rem;
+      width: 2.5rem;
       top: 50%;
       right: 3%;
       align-self: flex-end;
@@ -60,24 +62,26 @@
       display: flex;
       flex-direction: column;
       justify-content: space-evenly;
-      padding: 0 1.5rem;
+      padding: 0 2rem;
     }
 
     .recipe__header {
-      font-size: 3rem;
+      font-size: 2.5rem;
+      -webkit-line-clamp: 4; /* number of lines to show */
     }
 
     .recipe__description {
       margin-top: 1rem;
-      font-size: 2rem;
+      font-size: 1.5rem;
+      -webkit-line-clamp: 4; /* number of lines to show */
     }
 
     .recipe__bookmarkBtn {
-      height: 3.5rem;
-      width: 3.5rem;
+      height: 3rem;
+      width: 3rem;
       left: 60%;
-      transform: translateX(-60%) translateY(-160%);
-      top: 100%;
+      transform: translateX(-60%);
+      top: 85%;
     }
   }
 
@@ -125,7 +129,6 @@
   @media only screen and (max-width: $bp-medium) {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-gap: 4rem;
     grid-template-areas:
       "one one"
       "two three"
@@ -141,7 +144,7 @@
     & > :nth-child(6),
     & > :nth-child(8),
     & > :nth-child(9) {
-      height: 50rem;
+      height: 60rem;
       display: grid;
       grid-template-rows: 50% 50%;
       grid-template-columns: 1fr;
@@ -151,7 +154,7 @@
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
-        padding: 1rem 1rem 0 1rem;
+        padding: 1rem 2rem 0 2rem;
       }
 
       .recipe__header {
@@ -190,18 +193,16 @@
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
-        padding: 0 1.5rem;
+        padding: 0 2rem;
       }
 
       .recipe__header {
         font-size: 3rem;
-        -webkit-line-clamp: 3; /* number of lines to show */
       }
 
       .recipe__description {
         margin-top: 1rem;
         font-size: 2rem;
-        -webkit-line-clamp: 3; /* number of lines to show */
       }
 
       .recipe__bookmarkBtn {
@@ -218,6 +219,7 @@
   @media only screen and (max-width: $bp-small) {
     display: grid;
     grid-template-columns: 1fr;
+    grid-gap: 4rem;
     grid-template-areas:
       "one"
       "two "
@@ -236,6 +238,10 @@
       grid-template-columns: 50% 50%;
       grid-template-rows: 40rem;
       justify-items: center;
+
+      .recipe__details {
+        padding: 0 2rem;
+      }
 
       .recipe__bookmarkBtn {
         left: 50%;
@@ -284,7 +290,7 @@
 }
 
 .recipe {
-  height: 50rem;
+  height: 35rem;
   background-color: $color-grey-light-1;
   position: relative;
   box-shadow: $shadow-medium;
@@ -327,7 +333,7 @@
     text-decoration: none;
     color: $color-grey-dark-1;
     margin: 1rem 0;
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: 600;
     overflow: hidden;
     background: linear-gradient(

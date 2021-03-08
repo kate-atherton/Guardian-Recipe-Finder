@@ -16,8 +16,9 @@ $color-grey-dark-3: #2c261f;
 $color-grey-dark-4: #181411;
 
 //RESPONSIVE BREAKPOINTS
-$bp-medium: 56.3em; //900px
+$bp-medium: 62.5em; //1000px
 $bp-small: 37.5em; //600px
+$bp-smallest: 25em; //400px
 
 //Meyer Reset
 html,
@@ -124,10 +125,6 @@ q {
 
 //////////////////////////////////////
 
-*:not(input) {
-  cursor: default;
-}
-
 * {
   font-family: "Bentham", serif;
 }
@@ -149,7 +146,7 @@ html {
   }
 
   @media only screen and (max-width: $bp-small) {
-    font-size: 31%;
+    font-size: 30%;
   }
 }
 
@@ -159,32 +156,25 @@ body {
 
 main {
   background-size: contain;
-  display: grid;
-  justify-content: center;
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .content {
   display: grid;
-  grid-template-rows: 15vh minmax(85vh, max-content);
-  margin-top: 10rem;
-  margin-bottom: 5rem;
+  grid-template-rows: 13rem minmax(calc(100vh - 13rem), max-content);
+  margin: 5rem auto;
   width: 100rem;
   max-width: 100vw;
   box-shadow: $shadow-dark;
   background-color: #ffffff;
 
   @media only screen and (max-width: $bp-medium) {
-    grid-template-rows: 20vh minmax(85vh, max-content);
     width: 100vw;
-    height: 100vw;
     margin-top: 0;
     margin-bottom: 0;
+    margin-left: 0;
+    margin-right: 0;
+    overflow-x: hidden;
   }
 }
-
-//media query plan:
-//maybe remove 1200 break, if nothing needs to change
-//at 1000, goes to two columns, looks good, ,maybe at 900 instead?
-//at 900, it should take up the entire screen
-//at 600, go to one column - DONE

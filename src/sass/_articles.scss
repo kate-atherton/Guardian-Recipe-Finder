@@ -1,10 +1,10 @@
 .articles {
   display: grid;
-  grid-template-rows: 5rem 12rem minmax(min-content, max-content) 10rem;
+  grid-template-rows: 5rem 10rem minmax(min-content, max-content) 10rem;
   grid-template-columns: 2fr 1fr;
 
   @media only screen and (max-width: $bp-medium) {
-    grid-template-rows: 8rem 12rem minmax(min-content, max-content) 15rem;
+    grid-template-rows: 8rem 10rem minmax(min-content, max-content) 15rem;
   }
 }
 
@@ -16,7 +16,7 @@
   align-self: center;
 
   &__text {
-    font-size: 4rem;
+    font-size: 3rem;
     color: $color-grey-dark-1;
     letter-spacing: 1px;
     padding: 2rem;
