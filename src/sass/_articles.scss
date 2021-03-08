@@ -1,6 +1,6 @@
 .articles {
   display: grid;
-  grid-template-rows: 5rem 10rem minmax(min-content, max-content) 10rem;
+  grid-template-rows: 4rem 8rem minmax(min-content, max-content) 10rem;
   grid-template-columns: 2fr 1fr;
 
   @media only screen and (max-width: $bp-medium) {

@@ -1,6 +1,6 @@
 .bookmarks {
   display: grid;
-  grid-template-rows: 15rem minmax(min-content, max-content) 10rem;
+  grid-template-rows: 12rem minmax(min-content, max-content) 10rem;
   grid-template-columns: 2fr 1fr;
 
   &__header {
@@ -9,7 +9,7 @@
     grid-column: 1 / span 1;
     justify-self: start;
     align-self: center;
-    font-size: 4rem;
+    font-size: 3rem;
     color: $color-grey-dark-1;
     letter-spacing: 1px;
     padding: 2rem;
@@ -38,16 +38,16 @@
     grid-row: 2 / span 1;
     grid-column: 1 / span 2;
     display: grid;
-    grid-template-rows: repeat(auto, 40rem);
-    grid-gap: 3rem;
+    grid-gap: 2rem;
+    padding: 0 2rem;
   }
 }
 
 .bookmark {
-  height: 40rem;
+  height: 25rem;
   background-color: $color-grey-light-1;
   position: relative;
-  box-shadow: $shadow-light;
+  box-shadow: $shadow-medium;
   display: grid;
   grid-template-columns: 45% 55%;
   justify-items: center;
@@ -69,24 +69,24 @@
   &__header {
     font-weight: 600;
     color: $color-grey-dark-1;
-    font-size: 3rem;
+    font-size: 2.25rem;
     overflow: hidden;
     text-overflow: ellipsis;
     word-wrap: break-word;
     display: -webkit-box;
-    -webkit-line-clamp: 3; /* number of lines to show */
+    -webkit-line-clamp: 2; /* number of lines to show */
     -webkit-box-orient: vertical;
   }
 
   &__description {
     margin-top: 1rem;
     color: $color-grey-dark-2;
-    font-size: 2rem;
+    font-size: 1.5rem;
     overflow: hidden;
     text-overflow: ellipsis;
     word-wrap: break-word;
     display: -webkit-box;
-    -webkit-line-clamp: 4; /* number of lines to show */
+    -webkit-line-clamp: 3; /* number of lines to show */
     -webkit-box-orient: vertical;
   }
 
@@ -96,7 +96,7 @@
     text-decoration: none;
     color: $color-grey-dark-1;
     margin: 1rem 0;
-    font-size: 2rem;
+    font-size: 1.5rem;
     font-weight: 600;
     overflow: hidden;
     background: linear-gradient(
@@ -131,12 +131,12 @@
   }
 
   &__delete {
-    height: 3rem;
-    width: 3rem;
+    height: 2.5rem;
+    width: 2.5rem;
     background-color: $color-primary;
     color: white;
     padding: 0.5rem;
-    font-size: 2rem;
+    font-size: 1.5rem;
     text-align: center;
     align-self: flex-end;
 
