@@ -41,6 +41,15 @@
     grid-gap: 2rem;
     padding: 0 2rem;
   }
+
+  @media only screen and (max-width: $bp-small) {
+    grid-template-columns: 1fr;
+
+    &__results {
+      grid-column: 1 / span 1;
+      padding: 0;
+    }
+  }
 }
 
 .bookmark {
@@ -91,7 +100,8 @@
   }
 
   &__link {
-    display: flex;
+    display: inline-flex;
+    text-align: center;
     align-items: center;
     text-decoration: none;
     color: $color-grey-dark-1;
@@ -100,6 +110,12 @@
     font-weight: 600;
     overflow: hidden;
     background: linear-gradient(
+      to right,
+      $color-grey-dark-3,
+      $color-grey-dark-4 50%,
+      $color-grey-dark-1 50%
+    );
+    background: -webkit-linear-gradient(
       to right,
       $color-grey-dark-3,
       $color-grey-dark-4 50%,
@@ -119,8 +135,10 @@
     }
 
     &::before {
-      margin-right: 0.25em;
+      margin-right: 4em;
       flex: 2;
+      display: inline-block;
+      width: 7rem;
     }
 
     &:hover {
@@ -143,5 +161,9 @@
     &:hover {
       cursor: pointer;
     }
+  }
+
+  @media only screen and (max-width: $bp-small) {
+    grid-template-columns: 50% 50%;
   }
 }

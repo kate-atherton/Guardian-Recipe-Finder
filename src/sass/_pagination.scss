@@ -33,6 +33,7 @@
       border: none;
       background-color: inherit;
       font-size: 2rem;
+      width: 5rem;
     }
   }
 
@@ -53,5 +54,9 @@
     &--enabled {
       cursor: pointer;
     }
+  }
+
+  @media only screen and (max-width: $bp-small) {
+    grid-column: 1 / span 1;
   }
 }

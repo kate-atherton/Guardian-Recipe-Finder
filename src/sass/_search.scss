@@ -13,6 +13,11 @@
   overflow: hidden;
   background-color: $color-grey-light-1;
 
+  @media only screen and (max-width: $bp-small) {
+    width: 40rem;
+    justify-self: center;
+  }
+
   &:focus {
     outline: none;
   }
@@ -26,6 +31,10 @@
 
     &:focus {
       outline: none;
+    }
+
+    @media only screen and (max-width: $bp-small) {
+      font-size: 2rem;
     }
   }
 

@@ -25,12 +25,10 @@ class ResultsView extends View {
     }"></use>
                 </svg>
                 <h1 class="recipe__header">${post.headline}</h1>
-                <p class="recipe__description">${post.preview}</p>
-                <a class="recipe__link" target="_blank" href="${
-                  post.url
-                }">Go to recipe</a>
-          
-                
+                <p class="recipe__description">${post.preview}</p>              
+                  <a class="recipe__link" target="_blank" href="${
+                    post.url
+                  }">Go to recipe</a>             
             </div>
         </div>
     `;

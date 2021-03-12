@@ -16,7 +16,7 @@ $color-grey-dark-3: #2c261f;
 $color-grey-dark-4: #181411;
 
 //RESPONSIVE BREAKPOINTS
-$bp-medium: 62.5em; //1000px
+$bp-medium: 56.3em; //900px
 $bp-small: 37.5em; //600px
 $bp-smallest: 25em; //400px
 
@@ -146,7 +146,8 @@ html {
   }
 
   @media only screen and (max-width: $bp-small) {
-    font-size: 30%;
+    font-size: 50%;
+    -webkit-text-size-adjust: none;
   }
 }
 
@@ -169,7 +170,7 @@ main {
   box-shadow: $shadow-dark;
   background-color: #ffffff;
 
-  @media only screen and (max-width: $bp-medium) {
+  @media only screen and (max-width: 1000px) {
     grid-template-rows: 15rem minmax(calc(100vh - 15rem), max-content);
     width: 100vw;
     margin-top: 0;
@@ -177,5 +178,9 @@ main {
     margin-left: 0;
     margin-right: 0;
     overflow-x: hidden;
+  }
+
+  @media only screen and (max-width: $bp-small) {
+    grid-template-rows: 18rem minmax(calc(100vh - 18rem), max-content);
   }
 }

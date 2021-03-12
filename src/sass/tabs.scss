@@ -1,9 +1,13 @@
 .tabcontent {
   height: fit-content;
-  padding: 2rem 3rem 0 3rem;
+  padding: 0 3rem;
   background-color: #ffffff;
 
   &__inactive {
     display: none;
+  }
+
+  @media only screen and (max-width: $bp-small) {
+    padding: 0 2rem;
   }
 }
