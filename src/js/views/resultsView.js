@@ -17,7 +17,9 @@ class ResultsView extends View {
   _generateMarkup(post) {
     return `
         <div id="${post.id}" class="recipe">
-            <img class="recipe__image" src="${post.image}" alt="${post.title}">
+            <img class="recipe__image image" src="${post.image}" alt="${
+      post.title
+    }">
             <div class="recipe__details">
             <svg class="recipe__bookmarkBtn">
                   <use class="recipe__bookmarkIcon" href="${icons}#icon-bookmark${
@@ -26,7 +28,7 @@ class ResultsView extends View {
                 </svg>
                 <h1 class="recipe__header">${post.headline}</h1>
                 <p class="recipe__description">${post.preview}</p>              
-                  <a class="recipe__link" target="_blank" href="${
+                  <a class="recipe__link link" target="_blank" href="${
                     post.url
                   }">Go to recipe</a>             
             </div>

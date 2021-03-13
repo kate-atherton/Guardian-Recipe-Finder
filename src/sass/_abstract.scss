@@ -1,0 +1,59 @@
+//Style variables
+$shadow-dark: 0 2rem 6rem rgba(0, 0, 0, 0.3);
+$shadow-medium: 0 2rem 5rem rgba(0, 0, 0, 0.15);
+$shadow-light: 0 2rem 5rem rgba(0, 0, 0, 0.06);
+
+$color-primary: #052962;
+$color-primary-light: #114290;
+$color-primary-dark: #01112a;
+
+$color-grey-light-1: #f9f7f6;
+$color-grey-light-2: #aaa;
+
+$color-grey-dark-1: #54483a; //normal text
+$color-grey-dark-2: #6d5d4b; //light text
+$color-grey-dark-3: #2c261f;
+$color-grey-dark-4: #181411;
+
+//RESPONSIVE BREAKPOINTS
+$bp-medium: 56.3em; //900px
+$bp-small: 37.5em; //600px
+
+//Recipe text
+@mixin line-limit {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+
+//Recipe padding
+$recipe-padding-sides: 0 2rem;
+$recipe-padding-full: 1rem 2rem 0 2rem;
+
+//Bookmark sizing
+@mixin small-bookmark {
+  height: 2.5rem;
+  width: 2.5rem;
+  top: 50%;
+  right: 3%;
+  align-self: flex-end;
+  transform: translateY(-50%);
+}
+
+@mixin large-bookmark {
+  height: 3rem;
+  width: 3rem;
+  top: 85%;
+  left: 60%;
+  transform: translateX(-60%);
+}
+
+@mixin central-bookmark {
+  height: 3rem;
+  width: 3rem;
+  top: 85%;
+  left: 50%;
+  transform: translateX(-50%) translateY(0);
+}

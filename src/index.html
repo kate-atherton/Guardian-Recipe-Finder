@@ -19,10 +19,9 @@
       <section class="content">
         <header class="header">
           <nav class="nav">         
-            <button id="articles"class="tab__link">Articles</button> 
-            <img class="logo" src="img/logo.png" alt="">  
-            <button  class="placeholder">Test</button>               
-            <button id="bookmarks" class="tab__link">Bookmarks</button>  
+            <button id="articles"class="nav__link">Articles</button> 
+            <img class="nav__logo" src="img/logo.png" alt="">  
+            <button id="bookmarks" class="nav__link">Bookmarks</button>  
           </nav>  
         </header>      
         <section class="tabcontent">          
@@ -41,14 +40,16 @@
             </form>   
             <div class="nocontent"></div>     
             <div class="sort"></div>
-            <div class="query"></div>  
+            <div class="query subtitle"></div>  
             <div class="results"></div>
             <div class="pagination"></div>
           </div>      
         </section>
         <section class="tabcontent tabcontent__inactive">
           <div class="bookmarks">
-            <h1 class="bookmarks__header">Your bookmarked articles</h1>
+            <div class="bookmarks__header subtitle">
+              <p class="subtitle__text">Your bookmarked articles</p>
+            </div>
           <div class="bookmarks__results"></div>
           <div class="bookmarks__pagination"></div>
           </div>      

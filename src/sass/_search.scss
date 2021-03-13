@@ -8,41 +8,23 @@
   height: 4rem;
   box-shadow: $shadow-light;
   grid-template-columns: 8fr 2fr;
-  border: none;
   border-radius: 1rem;
   overflow: hidden;
   background-color: $color-grey-light-1;
 
-  @media only screen and (max-width: $bp-small) {
-    width: 40rem;
-    justify-self: center;
-  }
-
-  &:focus {
-    outline: none;
-  }
-
   &__field {
-    color: $color-grey-dark-2;
     border: none;
     padding: 1rem 1.5rem;
-    font-size: 1.5rem;
     background-color: inherit;
 
     &:focus {
       outline: none;
-    }
-
-    @media only screen and (max-width: $bp-small) {
-      font-size: 2rem;
     }
   }
 
   &__btn {
     background-color: inherit;
     border: none;
-    font-size: 1.5rem;
-    font-weight: 600;
 
     &:hover {
       cursor: pointer;
@@ -50,6 +32,14 @@
 
     &:focus {
       outline: none;
+    }
+  }
+
+  @media only screen and (max-width: $bp-small) {
+    width: 40rem;
+
+    &__field {
+      font-size: 2rem;
     }
   }
 }

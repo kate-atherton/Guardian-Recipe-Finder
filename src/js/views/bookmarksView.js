@@ -17,11 +17,11 @@ class BookmarksView extends View {
   _generateMarkup(bookmark) {
     return `
         <div id="bookmark-${bookmark.id}" class="bookmark">
-            <img class="bookmark__image" src="${bookmark.image}" alt="${bookmark.title}">
+            <img class="bookmark__image image" src="${bookmark.image}" alt="${bookmark.title}">
             <div class="bookmark__details">
                 <h1 class="bookmark__header">${bookmark.headline}</h1>
                 <p class="bookmark__description">${bookmark.preview}</p>
-                <a class="bookmark__link" target="_blank" href="${bookmark.url}">Go to recipe</a>
+                <a class="bookmark__link link" target="_blank" href="${bookmark.url}">Go to recipe</a>
                 <span class="bookmark__delete fa fa-trash"></span>
             </div>
         </div>

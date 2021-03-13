@@ -8,7 +8,7 @@ class QueryView extends View {
   renderQuery(query) {
     this._clear();
 
-    const searchedText = `<p class="query__text"> ${
+    const searchedText = `<p class="subtitle__text"> ${
       query === "default" ? "The Latest Articles" : `Results for: ${query}</p>`
     }`;
 

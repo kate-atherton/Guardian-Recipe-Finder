@@ -53,19 +53,23 @@ class PaginationView extends View {
 
     let buttonHtml = ``;
 
+    console.log(allPages);
+
     allPages.forEach((button) => {
       buttonHtml += `<button class= "pagination__${
         typeof button === "number" ? "btn" : "dots"
-      }${button === curPage ? "--active" : ""}">${button}</button>`;
+      } ${
+        button === curPage ? "pagination__btn--active" : ""
+      }">${button}</button>`;
     });
 
     return `
       <button class="pagination__btn pagination__arrow pagination__arrow${
         curPage !== 1 ? "--enabled" : "--disabled"
-      }"
-        
-      }" data-goto="${curPage - 1}">Previous</button>
+      }"}" data-goto="${curPage - 1}">Previous</button>
+
       ${buttonHtml}
+
       <button class="pagination__btn pagination__arrow pagination__arrow${
         curPage !== numPages ? "--enabled" : "--disabled"
       }" data-goto="${curPage + 1}">Next</button>

@@ -4,7 +4,7 @@ class tabView extends View {
   addHandlerMoveTab(handler) {
     document.querySelector(".nav").addEventListener("click", (e) => {
       //hide section which is not selected??
-      const tab = e.target.closest(".tab__link");
+      const tab = e.target.closest(".nav__link");
       const tabContainer = document.querySelector(`.${tab.id}`).parentElement;
 
       if (!tab || !tabContainer.classList.contains("tabcontent__inactive")) {

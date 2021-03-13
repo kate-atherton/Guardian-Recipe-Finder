@@ -4,34 +4,8 @@
   grid-template-columns: 2fr 1fr;
 
   &__header {
-    width: 100%;
     grid-row: 1 / span 1;
     grid-column: 1 / span 1;
-    justify-self: start;
-    align-self: center;
-    font-size: 3rem;
-    color: $color-grey-dark-1;
-    letter-spacing: 1px;
-    padding: 2rem;
-    display: flex;
-    align-items: center;
-    text-align: center;
-
-    &::before,
-    &::after {
-      content: "";
-      border-bottom: 1px solid $color-grey-dark-1;
-    }
-
-    &::before {
-      margin-right: 0.25em;
-      flex: 0.5;
-    }
-
-    &::after {
-      margin-left: 0.25em;
-      flex: 2;
-    }
   }
 
   &__results {
@@ -55,97 +29,33 @@
 .bookmark {
   height: 25rem;
   background-color: $color-grey-light-1;
+  display: grid;
   position: relative;
   box-shadow: $shadow-medium;
-  display: grid;
   grid-template-columns: 45% 55%;
   justify-items: center;
-
-  &__image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    overflow: hidden;
-  }
 
   &__details {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    padding: 0 2rem;
+    padding: $recipe-padding-sides;
   }
 
   &__header {
     font-weight: 600;
     color: $color-grey-dark-1;
     font-size: 2.25rem;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    word-wrap: break-word;
-    display: -webkit-box;
+    @include line-limit;
     -webkit-line-clamp: 2; /* number of lines to show */
-    -webkit-box-orient: vertical;
   }
 
   &__description {
     margin-top: 1rem;
     color: $color-grey-dark-2;
     font-size: 1.5rem;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    word-wrap: break-word;
-    display: -webkit-box;
+    @include line-limit;
     -webkit-line-clamp: 3; /* number of lines to show */
-    -webkit-box-orient: vertical;
-  }
-
-  &__link {
-    display: inline-flex;
-    text-align: center;
-    align-items: center;
-    text-decoration: none;
-    color: $color-grey-dark-1;
-    margin: 1rem 0;
-    font-size: 1.5rem;
-    font-weight: 600;
-    overflow: hidden;
-    background: linear-gradient(
-      to right,
-      $color-grey-dark-3,
-      $color-grey-dark-4 50%,
-      $color-grey-dark-1 50%
-    );
-    background: -webkit-linear-gradient(
-      to right,
-      $color-grey-dark-3,
-      $color-grey-dark-4 50%,
-      $color-grey-dark-1 50%
-    );
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-size: 200% 100%;
-    background-position: 100%;
-    transition: all 300ms ease;
-
-    &::before,
-    &::after {
-      content: "";
-      border-bottom: 1px solid $color-grey-dark-1;
-    }
-
-    &::before {
-      margin-right: 4em;
-      flex: 2;
-      display: inline-block;
-      width: 7rem;
-    }
-
-    &:hover {
-      cursor: pointer;
-      background-position: 0 100%;
-      font-weight: 900;
-    }
   }
 
   &__delete {
@@ -161,9 +71,5 @@
     &:hover {
       cursor: pointer;
     }
-  }
-
-  @media only screen and (max-width: $bp-small) {
-    grid-template-columns: 50% 50%;
   }
 }
