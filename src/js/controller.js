@@ -44,8 +44,6 @@ const controlResults = async (alreadySearched, page = 1) => {
     noContentView.renderSpinner();
     await model.loadResults();
 
-    //sort and pagination should only load if there are results!
-
     if (Object.keys(model.state.posts).length === 0) {
       noContentView.renderError("There were no results for your query");
       resultsView._clear();
@@ -57,11 +55,8 @@ const controlResults = async (alreadySearched, page = 1) => {
     queryView.renderQuery(model.state.searched);
     paginationView.renderPagination(model.state);
 
-    //Updating bookmarks view
     bookmarksView.renderResults(model.state.bookmarks, controlRemoveBookmark);
 
-    //check if its default or not
-    //Add a sort option
     if (model.state.searched !== "default") {
       sortView.renderSortOption(model.state.sort);
       sortView.removeHandlerDropdown();
@@ -70,7 +65,6 @@ const controlResults = async (alreadySearched, page = 1) => {
       sortView.addHandlerSort(controlSort);
     }
 
-    //Add bookmark event handler
     resultsView.addHandlerAddBookmark(controlBookmark);
   } catch (err) {
     resultsView.renderError(err);
@@ -96,7 +90,7 @@ const controlTab = () => {
 };
 
 const controlBookmark = (uniqueId) => {
-  let articleToBookmark = model.state.posts.find(
+  const articleToBookmark = model.state.posts.find(
     (element) => element.id === uniqueId
   );
 
@@ -114,7 +108,7 @@ const controlBookmark = (uniqueId) => {
 };
 
 const controlRemoveBookmark = (uniqueId) => {
-  let articleToRemove = model.state.bookmarks.find(
+  const articleToRemove = model.state.bookmarks.find(
     (element) => element.id === uniqueId
   );
   model.deleteBookmark(articleToRemove);
@@ -122,7 +116,7 @@ const controlRemoveBookmark = (uniqueId) => {
   controlResults(true);
 };
 
-const init = function () {
+const init = () => {
   searchView.addHandlerRender(controlResults);
   paginationView.addHandlerClick(controlPagination);
   tabView.addHandlerMoveTab(controlTab);

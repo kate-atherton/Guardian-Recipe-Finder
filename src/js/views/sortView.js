@@ -36,7 +36,7 @@ class sortView extends View {
   _toggleDropdown() {
     document
       .querySelector(".dropdown__option--inactive")
-      .classList.toggle("dropdown__option--inactive--show");
+      .classList.toggle("dropdown__option--show");
   }
 
   _btnInitToggle() {
@@ -48,7 +48,7 @@ class sortView extends View {
       !this._parentElement.contains(e.target) &&
       document
         .querySelector(".dropdown__option--inactive")
-        ?.classList.contains("dropdown__option--inactive--show")
+        ?.classList.contains("dropdown__option--show")
     ) {
       this._toggleDropdown();
     }
