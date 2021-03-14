@@ -53,8 +53,6 @@ class PaginationView extends View {
 
     let buttonHtml = ``;
 
-    console.log(allPages);
-
     allPages.forEach((button) => {
       buttonHtml += `<button class= "pagination__${
         typeof button === "number" ? "btn" : "dots"

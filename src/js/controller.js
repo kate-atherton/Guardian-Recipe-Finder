@@ -1,7 +1,6 @@
 import "../sass/main.scss";
 import * as model from "./model.js";
 import resultsView from "./views/resultsView";
-import View from "./views/view.js";
 import paginationView from "./views/paginationView.js";
 import searchView from "./views/searchView";
 import sortView from "./views/sortView";
@@ -9,8 +8,6 @@ import queryView from "./views/queryView";
 import tabView from "./views/tabView";
 import bookmarksView from "./views/bookmarksView";
 import noContentView from "./views/noContentView";
-
-// import { debug } from "webpack";
 
 const clearPage = () => {
   resultsView._clear();

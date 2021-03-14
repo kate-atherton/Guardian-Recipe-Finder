@@ -7,7 +7,7 @@
     grid-column: 1 / span 1;
     grid-row: 2 / span 1;
     z-index: 100;
-    margin-top: 2rem;
+    margin-top: 3rem;
   }
 }
 
@@ -15,11 +15,13 @@
   display: grid;
   grid-template-columns: 8.5rem 13rem;
   grid-template-rows: 3.5rem 3.5rem;
+  font-size: 1.5rem;
 
   &__btn {
     border: none;
     background-color: $color-primary;
     color: white;
+    font-weight: 600;
   }
 
   &__content {
@@ -27,7 +29,6 @@
     grid-column: 2 / span 1;
     display: grid;
     grid-template-rows: 3.5rem 3.5rem;
-    font-size: 1.5rem;
     text-align: center;
   }
 

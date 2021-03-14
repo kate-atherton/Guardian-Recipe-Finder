@@ -15,7 +15,7 @@
     &:hover {
       cursor: pointer;
       color: $color-grey-dark-4;
-      font-weight: 800;
+      font-weight: 500;
     }
 
     &:focus {
@@ -24,7 +24,7 @@
 
     &--active {
       color: $color-grey-dark-4;
-      font-weight: 800;
+      font-weight: 500;
       cursor: auto;
     }
   }
