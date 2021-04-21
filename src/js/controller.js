@@ -80,6 +80,7 @@ const controlSort = (sortOption) => {
 };
 
 const controlPagination = async (page) => {
+  resultsView.scrollToTop();
   model.updatePage(page);
   controlResults(true, page);
 };
