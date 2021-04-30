@@ -11,12 +11,12 @@
   border-radius: 1rem;
   overflow: hidden;
   background-color: $color-grey-light-1;
-  font-size: 1.5rem;
 
   &__field {
     border: none;
     padding: 1rem 1.5rem;
     background-color: inherit;
+    font-size: 1.75rem;
 
     &:focus {
       outline: none;
