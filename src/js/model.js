@@ -26,15 +26,23 @@ export const loadResults = async () => {
   }
 
   try {
-    const data = await getData(
-      `${API_URL}page=${
-        state.page
-      }&page-size=${RES_PER_PAGE}&tag=tone%2Frecipes&q=${
-        state.searched === "default" ? "" : state.searched
-      }&api-key=${KEY}&order-by=${
-        state.searched === "default" ? "newest" : state.sort
-      }&show-fields=all&show-tags=all&show-blocks=all&show-elements=all`
+    const params = new URLSearchParams();
+
+    params.set("page", state.page);
+    params.set("page-size", RES_PER_PAGE);
+    params.set("tag", "tone/recipes");
+    params.set("q", state.searched === "default" ? "" : state.searched);
+    params.set("api-key", KEY);
+    params.set(
+      "order-by",
+      state.searched === "default" ? "newest" : state.sort
     );
+    params.set("show-fields", "all");
+    params.set("show-tags", "all");
+    params.set("show-blocks", "all");
+    params.set("show-elements", "all");
+
+    const data = await getData(API_URL + params.toString());
 
     state.totalPages = data.response.pages;
     state.totalPosts = data.response.total;
