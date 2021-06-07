@@ -31,8 +31,6 @@ This will start a webpack dev-server that will be available on localhost:3000
 
 Site is deployed on github pages from the gh-pages branch.
 
-Ensure
-
 To redeploy:
 
 ```git checkout gh-pages
