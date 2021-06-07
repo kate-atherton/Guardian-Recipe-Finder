@@ -37,7 +37,7 @@ To redeploy:
 
 ```git checkout gh-pages
 git checkout -b gh-pages
-git merge master
+git merge main
 npm run build
 git add .
 git commit -m "Builds latest version"
