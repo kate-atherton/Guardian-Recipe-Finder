@@ -1,5 +1,6 @@
 import { getData } from "./helpers.js";
 import { API_URL, KEY, RES_PER_PAGE } from "./config.js";
+import placeholderImg from "../../static/img/placeholder.jpg";
 
 export const state = {
   posts: {},
@@ -47,8 +48,6 @@ export const loadResults = async () => {
     state.totalPages = data.response.pages;
     state.totalPosts = data.response.total;
     state.page = data.response.currentPage;
-
-    const placeholderImg = "static/img/placeholder.jpg";
 
     const results = data.response.results.map((art) => {
       return {
