@@ -5,7 +5,7 @@ import foodIcon from "../../../static/img/spinner.svg";
 class noContentView extends View {
   _parentElement = document.querySelector(".nocontent");
 
-  renderError(message = this._errorMessage) {
+  renderError(message) {
     const markup = `             
                 <div class="nocontent__message">
                     <img src="${queryIcon}" class="nocontent__icon" alt="Query icon">

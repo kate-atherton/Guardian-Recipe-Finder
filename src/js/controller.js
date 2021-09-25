@@ -35,7 +35,7 @@ const controlResults = async (alreadySearched, page = 1) => {
       } else if (!model.checkValidQuery(query)) {
         clearPage();
         noContentView.renderError(
-          "Please only included alphabetical characters in your search query"
+          "Please only include alphabetical characters in your search query"
         );
         return;
       }
