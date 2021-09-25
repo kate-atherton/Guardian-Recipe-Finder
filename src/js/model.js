@@ -9,7 +9,6 @@ export const state = {
   searched: "default",
   sort: "relevance",
   totalPages: 0,
-  totalPosts: 0,
   activeTab: "articles",
   inactiveTab: "bookmarks",
   bookmarks: [],
@@ -46,8 +45,6 @@ export const loadResults = async () => {
     const data = await getData(API_URL + params.toString());
 
     state.totalPages = data.response.pages;
-    state.totalPosts = data.response.total;
-    state.page = data.response.currentPage;
 
     const results = data.response.results.map((art) => {
       return {
