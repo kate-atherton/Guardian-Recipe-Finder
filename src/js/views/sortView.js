@@ -68,7 +68,6 @@ class sortView extends View {
   }
 
   _sortResults = (e) => {
-    e.preventDefault();
     const btn = e.target.closest(".dropdown__option");
     if (!btn || btn.classList.contains("dropdown__option--active")) return;
     return this._sortHandler(btn.id);

@@ -6,12 +6,10 @@ class searchView extends View {
 
   addHandlerRender(handler) {
     window.addEventListener("load", function (e) {
-      e.preventDefault();
       return handler(true);
     });
 
     this._searchBtn.addEventListener("click", function (e) {
-      e.preventDefault();
       return handler();
     });
   }
