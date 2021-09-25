@@ -46,7 +46,6 @@ const controlResults = async (alreadySearched, page = 1) => {
 
     if (Object.keys(model.state.posts).length === 0) {
       noContentView.renderError("There were no results for your query");
-      resultsView._clear();
       return;
     }
 
