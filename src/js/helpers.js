@@ -14,5 +14,6 @@ export const getData = async (url) => {
     return data;
   } catch (err) {
     console.log(err);
+    throw err;
   }
 };

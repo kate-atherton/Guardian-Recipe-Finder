@@ -1,20 +1,16 @@
-import icons from "../../../static/img/icons.svg";
+import queryIcon from "../../../static/img/search.svg";
 
 export default class View {
   _clear() {
     this._parentElement.innerHTML = "";
   }
 
-  renderError(message = this._errorMessage) {
+  renderError(message) {
     const markup = `
-                  <div class="error">
-                    <div>
-                        <svg>
-                        <use href="${icons}#icon-alert-triangle"></use>
-                        </svg>
-                    </div>
-                    <p>${message}</p>
-                   </div>
+                  <div class="message">               
+                      <img src="${queryIcon}" class="message__icon" alt="Query icon">
+                      <p>${message}</p>
+                  </div>
                   `;
     this._clear();
     this._parentElement.insertAdjacentHTML("afterbegin", markup);

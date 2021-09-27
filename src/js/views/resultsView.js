@@ -3,7 +3,7 @@ import View from "./view.js";
 
 class ResultsView extends View {
   _parentElement = document.querySelector(".results");
-  _errorMessage = "No results found for your query! Please try again";
+  _errorMessage = "Failed to retrieve results";
 
   renderResults(posts) {
     this._clear();
