@@ -20,29 +20,29 @@ const clearPage = () => {
 const controlResults = async (alreadySearched, page = 1) => {
   clearPage();
   model.updatePage(page);
-  let query;
-
-  if (!alreadySearched) {
-    query = searchView.getQuery();
-    model.updateSearch(query);
-    if (!query) {
-      clearPage();
-      noContentView.renderError(
-        "You did not enter a search query, please try again"
-      );
-      return;
-    } else if (!model.checkValidQuery(query)) {
-      clearPage();
-      noContentView.renderError(
-        "Please only include alphabetical characters in your search query"
-      );
-      return;
-    }
-  }
-
-  noContentView.renderSpinner();
 
   try {
+    let query;
+
+    if (!alreadySearched) {
+      query = searchView.getQuery();
+      model.updateSearch(query);
+      if (!query) {
+        clearPage();
+        noContentView.renderError(
+          "You did not enter a search query, please try again"
+        );
+        return;
+      } else if (!model.checkValidQuery(query)) {
+        clearPage();
+        noContentView.renderError(
+          "Please only include alphabetical characters in your search query"
+        );
+        return;
+      }
+    }
+
+    noContentView.renderSpinner();
     await model.loadResults();
 
     if (Object.keys(model.state.posts).length === 0) {
