@@ -4,17 +4,6 @@
   justify-self: center;
   align-self: end;
 
-  &__message {
-    color: $color-grey-dark-1;
-    display: flex;
-    font-size: 2rem;
-    align-items: center;
-  }
-
-  &__icon {
-    width: 6rem;
-  }
-
   &__spinner {
     margin: 5rem auto;
     text-align: center;

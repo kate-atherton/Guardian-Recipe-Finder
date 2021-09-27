@@ -25,54 +25,47 @@ export const loadResults = async () => {
     state.searched = state.searched.split(" ").join("%20");
   }
 
-  try {
-    const params = new URLSearchParams();
+  const params = new URLSearchParams();
 
-    params.set("page", state.page);
-    params.set("page-size", RES_PER_PAGE);
-    params.set("tag", "tone/recipes");
-    params.set("q", state.searched === "default" ? "" : state.searched);
-    params.set("api-key", KEY);
-    params.set(
-      "order-by",
-      state.searched === "default" ? "newest" : state.sort
-    );
-    params.set("show-fields", "all");
-    params.set("show-tags", "all");
-    params.set("show-blocks", "all");
-    params.set("show-elements", "all");
+  params.set("page", state.page);
+  params.set("page-size", RES_PER_PAGE);
+  params.set("tag", "tone/recipes");
+  params.set("q", state.searched === "default" ? "" : state.searched);
+  params.set("api-key", KEY);
+  params.set("order-by", state.searched === "default" ? "newest" : state.sort);
+  params.set("show-fields", "all");
+  params.set("show-tags", "all");
+  params.set("show-blocks", "all");
+  params.set("show-elements", "all");
 
-    const data = await getData(API_URL + params.toString());
+  const data = await getData(API_URL + params.toString());
 
-    state.totalPages = data.response.pages;
+  state.totalPages = data.response.pages;
 
-    const results = data.response.results.map((art) => {
-      return {
-        headline: art.webTitle,
-        image: [
-          art.fields.thumbnail,
-          art.blocks.main?.elements[0]?.assets[0]?.file,
-          art.blocks.body[0]?.elements[0]?.assets[0]?.file,
-          placeholderImg,
-        ].find(Boolean),
-        preview: art.fields.trailText,
-        url: art.webUrl,
-        bookmarked: false,
-        id: art.id,
-      };
-    });
+  const results = data.response.results.map((art) => {
+    return {
+      headline: art.webTitle,
+      image: [
+        art.fields.thumbnail,
+        art.blocks.main?.elements[0]?.assets[0]?.file,
+        art.blocks.body[0]?.elements[0]?.assets[0]?.file,
+        placeholderImg,
+      ].find(Boolean),
+      preview: art.fields.trailText,
+      url: art.webUrl,
+      bookmarked: false,
+      id: art.id,
+    };
+  });
 
-    results.forEach((art) => {
-      art.preview = art.preview.replace(/(<p>|<\/p>)/g, "");
-      if (state.bookmarks.find((element) => element.id === art.id)) {
-        art.bookmarked = true;
-      }
-    });
+  results.forEach((art) => {
+    art.preview = art.preview.replace(/(<p>|<\/p>)/g, "");
+    if (state.bookmarks.find((element) => element.id === art.id)) {
+      art.bookmarked = true;
+    }
+  });
 
-    state.posts = results;
-  } catch (err) {
-    console.error(err);
-  }
+  state.posts = results;
 };
 
 export const updateSearch = (query) => {

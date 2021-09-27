@@ -18,30 +18,31 @@ const clearPage = () => {
 };
 
 const controlResults = async (alreadySearched, page = 1) => {
-  try {
-    clearPage();
-    model.updatePage(page);
-    let query;
+  clearPage();
+  model.updatePage(page);
+  let query;
 
-    if (!alreadySearched) {
-      query = searchView.getQuery();
-      model.updateSearch(query);
-      if (!query) {
-        clearPage();
-        noContentView.renderError(
-          "You did not enter a search query, please try again"
-        );
-        return;
-      } else if (!model.checkValidQuery(query)) {
-        clearPage();
-        noContentView.renderError(
-          "Please only include alphabetical characters in your search query"
-        );
-        return;
-      }
+  if (!alreadySearched) {
+    query = searchView.getQuery();
+    model.updateSearch(query);
+    if (!query) {
+      clearPage();
+      noContentView.renderError(
+        "You did not enter a search query, please try again"
+      );
+      return;
+    } else if (!model.checkValidQuery(query)) {
+      clearPage();
+      noContentView.renderError(
+        "Please only include alphabetical characters in your search query"
+      );
+      return;
     }
+  }
 
-    noContentView.renderSpinner();
+  noContentView.renderSpinner();
+
+  try {
     await model.loadResults();
 
     if (Object.keys(model.state.posts).length === 0) {
@@ -65,8 +66,9 @@ const controlResults = async (alreadySearched, page = 1) => {
     }
 
     resultsView.addHandlerAddBookmark(controlBookmark);
-  } catch (err) {
-    resultsView.renderError(err);
+  } catch {
+    noContentView._clear();
+    noContentView.renderError("Failed to fetch results");
   }
 };
 
