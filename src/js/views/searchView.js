@@ -10,6 +10,7 @@ class searchView extends View {
     });
 
     this._searchBtn.addEventListener("click", function (e) {
+      e.preventDefault();
       return handler();
     });
   }
