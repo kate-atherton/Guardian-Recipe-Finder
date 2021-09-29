@@ -34,7 +34,6 @@ Site is deployed on github pages from the gh-pages branch.
 To redeploy:
 
 ```git checkout gh-pages
-git checkout -b gh-pages
 git merge main
 npm run build
 git add .
